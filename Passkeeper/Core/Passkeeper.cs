@@ -7,12 +7,12 @@
 
 		}
 
-		public void GetCurrentPassword( string _id )
+		public void GetCurrentPassword( string _resourceName )
 		{
 
 		}
 
-		public void GetAllPasswords( string _id )
+		public void GetAllPasswords( string _resourceName )
 		{
 
 		}

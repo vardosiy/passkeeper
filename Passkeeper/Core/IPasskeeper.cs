@@ -8,6 +8,12 @@ namespace Passkeeper.Core
 {
 	interface IPasskeeper
 	{
+		void Load();
 
+		NamePassword GetCurrentData( string _resourceName );
+
+		void GetPasswordHistory( string _resourceName );
+
+		void Access();
 	}
 }

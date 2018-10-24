@@ -13,7 +13,7 @@ namespace Passkeeper.Core
 
 		}
 
-		private void CheckPAssword()
+		private void CheckPassword()
 		{
 
 		}
