@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\IPasskeeper.cs" />
+    <Compile Include="Core\NamePassword.cs" />
     <Compile Include="Core\Passkeeper.cs" />
     <Compile Include="Core\PasswordChecker.cs" />
     <Compile Include="Gui\Forms\ApplicationForm.cs">
