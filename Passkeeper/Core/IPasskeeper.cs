@@ -10,10 +10,10 @@ namespace Passkeeper.Core
 	{
 		void Load();
 
-		NamePassword GetCurrentData( string _resourceName );
-
 		void GetPasswordHistory( string _resourceName );
 
 		void Access();
+
+		NamePassword GetCurrentData( string _resourceName );
 	}
 }

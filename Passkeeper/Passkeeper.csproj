@@ -50,6 +50,12 @@
     <Compile Include="Core\NamePassword.cs" />
     <Compile Include="Core\Passkeeper.cs" />
     <Compile Include="Core\PasswordChecker.cs" />
+    <Compile Include="Gui\Forms\AddAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\Forms\AddAccountForm.Designer.cs">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\Forms\AddResourceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,8 +68,12 @@
     <Compile Include="Gui\Forms\ApplicationForm.Designer.cs">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\GuiUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Gui\Forms\AddAccountForm.resx">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\Forms\AddResourceForm.resx">
       <DependentUpon>AddResourceForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,6 +1,6 @@
 ﻿namespace Passkeeper.Core
 {
-	class NamePassword
+	struct NamePassword
 	{
 		public string UserName { get; set; }
 

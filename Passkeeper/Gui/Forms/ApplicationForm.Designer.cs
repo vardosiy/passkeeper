@@ -30,7 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ApplicationForm));
 			this.AddResourceButton = new System.Windows.Forms.Button();
-			this.RemoveButton = new System.Windows.Forms.Button();
+			this.RemoveResourceButton = new System.Windows.Forms.Button();
 			this.ClearHistoryButton = new System.Windows.Forms.Button();
 			this.ResourceList = new System.Windows.Forms.ListBox();
 			this.ResourceAccountsComboBox = new System.Windows.Forms.ComboBox();
@@ -59,20 +59,22 @@
 			this.AddResourceButton.UseVisualStyleBackColor = false;
 			this.AddResourceButton.Click += new System.EventHandler(this.AddResourceButton_Click);
 			// 
-			// RemoveButton
+			// RemoveResourceButton
 			// 
-			this.RemoveButton.BackColor = System.Drawing.Color.IndianRed;
-			this.RemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.RemoveButton.Location = new System.Drawing.Point(250, 14);
-			this.RemoveButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.RemoveButton.Name = "RemoveButton";
-			this.RemoveButton.Size = new System.Drawing.Size(225, 35);
-			this.RemoveButton.TabIndex = 1;
-			this.RemoveButton.Text = "Remove Resource";
-			this.RemoveButton.UseVisualStyleBackColor = false;
+			this.RemoveResourceButton.BackColor = System.Drawing.Color.IndianRed;
+			this.RemoveResourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.RemoveResourceButton.Location = new System.Drawing.Point(250, 14);
+			this.RemoveResourceButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.RemoveResourceButton.Name = "RemoveResourceButton";
+			this.RemoveResourceButton.Size = new System.Drawing.Size(225, 35);
+			this.RemoveResourceButton.TabIndex = 1;
+			this.RemoveResourceButton.Text = "Remove Resource";
+			this.RemoveResourceButton.UseVisualStyleBackColor = false;
+			this.RemoveResourceButton.Click += new System.EventHandler(this.RemoveResourceButton_Click);
 			// 
 			// ClearHistoryButton
 			// 
+			this.ClearHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ClearHistoryButton.Location = new System.Drawing.Point(484, 277);
 			this.ClearHistoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ClearHistoryButton.Name = "ClearHistoryButton";
@@ -80,21 +82,25 @@
 			this.ClearHistoryButton.TabIndex = 2;
 			this.ClearHistoryButton.Text = "Clear History";
 			this.ClearHistoryButton.UseVisualStyleBackColor = true;
+			this.ClearHistoryButton.Click += new System.EventHandler(this.ClearHistoryButton_Click);
 			// 
 			// ResourceList
 			// 
+			this.ResourceList.BackColor = System.Drawing.SystemColors.GrayText;
+			this.ResourceList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.ResourceList.FormattingEnabled = true;
 			this.ResourceList.ItemHeight = 20;
 			this.ResourceList.Location = new System.Drawing.Point(18, 58);
 			this.ResourceList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ResourceList.Name = "ResourceList";
-			this.ResourceList.Size = new System.Drawing.Size(456, 604);
+			this.ResourceList.Size = new System.Drawing.Size(456, 502);
 			this.ResourceList.Sorted = true;
 			this.ResourceList.TabIndex = 3;
-			this.ResourceList.UseWaitCursor = true;
 			// 
 			// ResourceAccountsComboBox
 			// 
+			this.ResourceAccountsComboBox.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.ResourceAccountsComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ResourceAccountsComboBox.FormattingEnabled = true;
 			this.ResourceAccountsComboBox.Location = new System.Drawing.Point(484, 17);
 			this.ResourceAccountsComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -105,7 +111,6 @@
 			// EmailLabel
 			// 
 			this.EmailLabel.AutoSize = true;
-			this.EmailLabel.BackColor = System.Drawing.SystemColors.Control;
 			this.EmailLabel.Location = new System.Drawing.Point(480, 69);
 			this.EmailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.EmailLabel.Name = "EmailLabel";
@@ -135,6 +140,7 @@
 			// 
 			// ChangeButton
 			// 
+			this.ChangeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ChangeButton.Location = new System.Drawing.Point(484, 188);
 			this.ChangeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ChangeButton.Name = "ChangeButton";
@@ -145,6 +151,7 @@
 			// 
 			// ShowHistoryButton
 			// 
+			this.ShowHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ShowHistoryButton.Location = new System.Drawing.Point(484, 232);
 			this.ShowHistoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ShowHistoryButton.Name = "ShowHistoryButton";
@@ -164,9 +171,11 @@
 			this.AddAccountButton.TabIndex = 10;
 			this.AddAccountButton.Text = "Add Account";
 			this.AddAccountButton.UseVisualStyleBackColor = false;
+			this.AddAccountButton.Click += new System.EventHandler(this.AddAccountButton_Click);
 			// 
 			// EmailTextBox
 			// 
+			this.EmailTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.EmailTextBox.Location = new System.Drawing.Point(603, 65);
 			this.EmailTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.EmailTextBox.Name = "EmailTextBox";
@@ -176,6 +185,7 @@
 			// 
 			// LoginTextBox
 			// 
+			this.LoginTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.LoginTextBox.Location = new System.Drawing.Point(603, 106);
 			this.LoginTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.LoginTextBox.Name = "LoginTextBox";
@@ -185,6 +195,7 @@
 			// 
 			// PasswordTextBox
 			// 
+			this.PasswordTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.PasswordTextBox.Location = new System.Drawing.Point(603, 148);
 			this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.PasswordTextBox.Name = "PasswordTextBox";
@@ -208,7 +219,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1029, 692);
+			this.BackColor = System.Drawing.SystemColors.GrayText;
+			this.ClientSize = new System.Drawing.Size(1029, 576);
 			this.Controls.Add(this.RemoveAccountButton);
 			this.Controls.Add(this.PasswordTextBox);
 			this.Controls.Add(this.LoginTextBox);
@@ -222,7 +234,7 @@
 			this.Controls.Add(this.ResourceAccountsComboBox);
 			this.Controls.Add(this.ResourceList);
 			this.Controls.Add(this.ClearHistoryButton);
-			this.Controls.Add(this.RemoveButton);
+			this.Controls.Add(this.RemoveResourceButton);
 			this.Controls.Add(this.AddResourceButton);
 			this.Font = new System.Drawing.Font("Century Gothic", 11.25F);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -237,7 +249,7 @@
 		#endregion
 
 		private System.Windows.Forms.Button AddResourceButton;
-		private System.Windows.Forms.Button RemoveButton;
+		private System.Windows.Forms.Button RemoveResourceButton;
 		private System.Windows.Forms.Button ClearHistoryButton;
 		private System.Windows.Forms.ListBox ResourceList;
 		private System.Windows.Forms.ComboBox ResourceAccountsComboBox;
