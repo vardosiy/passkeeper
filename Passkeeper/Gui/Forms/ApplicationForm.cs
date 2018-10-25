@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Passkeeper.Gui.Forms;
 
 namespace Passkeeper
 {
@@ -15,6 +16,15 @@ namespace Passkeeper
 		public ApplicationForm()
 		{
 			InitializeComponent();
+		}
+
+		private void AddResourceButton_Click( object sender, EventArgs e )
+		{
+			AddResourceForm form = new AddResourceForm();
+			DialogResult result = form.ShowDialog();
+
+			if ( result != DialogResult.OK )
+				return;
 		}
 	}
 }
