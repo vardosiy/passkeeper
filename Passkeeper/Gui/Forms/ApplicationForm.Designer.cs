@@ -61,7 +61,7 @@
 			// 
 			// RemoveResourceButton
 			// 
-			this.RemoveResourceButton.BackColor = System.Drawing.Color.IndianRed;
+			this.RemoveResourceButton.BackColor = System.Drawing.Color.Teal;
 			this.RemoveResourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.RemoveResourceButton.Location = new System.Drawing.Point(250, 14);
 			this.RemoveResourceButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -205,7 +205,7 @@
 			// 
 			// RemoveAccountButton
 			// 
-			this.RemoveAccountButton.BackColor = System.Drawing.Color.IndianRed;
+			this.RemoveAccountButton.BackColor = System.Drawing.Color.Teal;
 			this.RemoveAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.RemoveAccountButton.Location = new System.Drawing.Point(484, 322);
 			this.RemoveAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -220,7 +220,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.GrayText;
-			this.ClientSize = new System.Drawing.Size(1029, 576);
+			this.ClientSize = new System.Drawing.Size(1029, 571);
 			this.Controls.Add(this.RemoveAccountButton);
 			this.Controls.Add(this.PasswordTextBox);
 			this.Controls.Add(this.LoginTextBox);

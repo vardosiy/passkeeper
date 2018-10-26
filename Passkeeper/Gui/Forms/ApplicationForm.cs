@@ -17,16 +17,13 @@ namespace Passkeeper
 
 		private void AddResourceButton_Click( object sender, EventArgs e )
 		{
-			ResourceList.Items.Add( "item_0" );
-			ResourceList.Items.Add( "item_1" );
-			ResourceList.Items.Add( "item_2" );
-			ResourceList.Items.Add( "item_3" );
-
 			AddResourceForm form = new AddResourceForm();
 			DialogResult result = form.ShowDialog();
 
 			if ( result != DialogResult.OK )
 				return;
+
+			// TODO...
 		}
 
 		//---------------------------------------------------------------------
@@ -37,7 +34,7 @@ namespace Passkeeper
 				return;
 
 			bool isUserSure = Gui.GuiUtils.ShowWarning(
-					"Are you sure, you want to remove data about all account asociated with this resource?"
+					"Are you sure, you want to remove data about all accounts asociated with this resource?"
 			);
 
 			if ( !isUserSure )
@@ -55,6 +52,10 @@ namespace Passkeeper
 
 			if ( result != DialogResult.OK )
 				return;
+
+			Types.Account account = new Types.Account( form.Email, form.Login, form.Password );
+
+			// TODO...
 		}
 
 		//---------------------------------------------------------------------

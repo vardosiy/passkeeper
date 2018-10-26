@@ -74,6 +74,7 @@
 			this.OkButton.TabIndex = 8;
 			this.OkButton.Text = "OK";
 			this.OkButton.UseVisualStyleBackColor = false;
+			this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
 			// 
 			// CancelButton
 			// 
@@ -86,6 +87,7 @@
 			this.CancelButton.TabIndex = 9;
 			this.CancelButton.Text = "Cancel";
 			this.CancelButton.UseVisualStyleBackColor = false;
+			this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
 			// PasswordLabel
 			// 

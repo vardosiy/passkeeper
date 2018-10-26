@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Types\Account.cs" />
     <Compile Include="Core\IPasskeeper.cs" />
-    <Compile Include="Core\NamePassword.cs" />
     <Compile Include="Core\Passkeeper.cs" />
     <Compile Include="Core\PasswordChecker.cs" />
     <Compile Include="Gui\Forms\AddAccountForm.cs">
