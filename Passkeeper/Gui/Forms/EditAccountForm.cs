@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Windows.Forms;
 
+using Passkeeper.Types;
+
 namespace Passkeeper.Gui.Forms
 {
-	public partial class AddAccountForm : Form
+	public partial class EditAccountForm : Form
 	{
-		public string Email { get; set; }
-
-		public string Login { get; set; }
-
-		public string Password { get; set; }
+		public Account Account { get; set; }
 
 		public DialogResult Result { get; set; }
 
-		public AddAccountForm()
+		public EditAccountForm( Account _account )
 		{
 			InitializeComponent();
+
+			Account = _account;
+
+			EmailTextBox.Text = _account.Email;
+			LoginTextBox.Text = _account.Login;
+			PasswordTextBox.Text = _account.Password;
 		}
 
 		#region Button click handlers
@@ -27,13 +31,17 @@ namespace Passkeeper.Gui.Forms
 				||	PasswordTextBox.Text == ""
 			)
 			{
+				GuiUtils.ShowWarning(
+					"You have cleared some field(s), changes will not be applied."
+				);
+
 				Result = DialogResult.Cancel;
 				Close();
 			}
 
-			Email = EmailTextBox.Text;
-			Login = LoginTextBox.Text;
-			Password = PasswordTextBox.Text;
+			Account.Email = EmailTextBox.Text;
+			Account.Login = LoginTextBox.Text;
+			Account.Password = PasswordTextBox.Text;
 
 			Result = DialogResult.OK;
 

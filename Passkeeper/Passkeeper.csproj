@@ -46,9 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\IResource.cs" />
+    <Compile Include="Core\Resource.cs" />
+    <Compile Include="Gui\Forms\EditAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\Forms\EditAccountForm.Designer.cs">
+      <DependentUpon>EditAccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Types\Account.cs" />
     <Compile Include="Core\IPasskeeper.cs" />
-    <Compile Include="Core\Passkeeper.cs" />
+    <Compile Include="Core\Controller.cs" />
     <Compile Include="Core\PasswordChecker.cs" />
     <Compile Include="Gui\Forms\AddAccountForm.cs">
       <SubType>Form</SubType>
@@ -71,6 +79,7 @@
     <Compile Include="Gui\GuiUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\HistoryRecord.cs" />
     <EmbeddedResource Include="Gui\Forms\AddAccountForm.resx">
       <DependentUpon>AddAccountForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Forms\ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Forms\EditAccountForm.resx">
+      <DependentUpon>EditAccountForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

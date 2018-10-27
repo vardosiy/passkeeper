@@ -79,6 +79,7 @@
 			// CancelButton
 			// 
 			this.CancelButton.BackColor = System.Drawing.Color.Teal;
+			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.CancelButton.Location = new System.Drawing.Point(290, 148);
 			this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -121,6 +122,7 @@
 			// 
 			// AddAccountForm
 			// 
+			this.AcceptButton = this.OkButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.GrayText;
@@ -134,6 +136,7 @@
 			this.Controls.Add(this.LoginTextBox);
 			this.Controls.Add(this.EmailTextBox);
 			this.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "AddAccountForm";

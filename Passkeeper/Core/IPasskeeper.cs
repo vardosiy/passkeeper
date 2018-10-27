@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Passkeeper.Core
 {
-	interface IPasskeeper
+	public interface IPasskeeper
 	{
 		void AddAccount( Types.Account _account );
 

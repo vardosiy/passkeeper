@@ -37,7 +37,7 @@
 			this.EmailLabel = new System.Windows.Forms.Label();
 			this.LoginLabel = new System.Windows.Forms.Label();
 			this.PasswordLabel = new System.Windows.Forms.Label();
-			this.ChangeButton = new System.Windows.Forms.Button();
+			this.EditAccountButton = new System.Windows.Forms.Button();
 			this.ShowHistoryButton = new System.Windows.Forms.Button();
 			this.AddAccountButton = new System.Windows.Forms.Button();
 			this.EmailTextBox = new System.Windows.Forms.TextBox();
@@ -96,6 +96,7 @@
 			this.ResourceList.Size = new System.Drawing.Size(456, 502);
 			this.ResourceList.Sorted = true;
 			this.ResourceList.TabIndex = 3;
+			this.ResourceList.SelectedIndexChanged += new System.EventHandler(this.ResourceList_SelectedIndexChanged);
 			// 
 			// ResourceAccountsComboBox
 			// 
@@ -107,6 +108,7 @@
 			this.ResourceAccountsComboBox.Name = "ResourceAccountsComboBox";
 			this.ResourceAccountsComboBox.Size = new System.Drawing.Size(336, 28);
 			this.ResourceAccountsComboBox.TabIndex = 4;
+			this.ResourceAccountsComboBox.SelectedIndexChanged += new System.EventHandler(this.ResourceAccountsComboBox_SelectedIndexChanged);
 			// 
 			// EmailLabel
 			// 
@@ -138,16 +140,17 @@
 			this.PasswordLabel.TabIndex = 7;
 			this.PasswordLabel.Text = "Password:";
 			// 
-			// ChangeButton
+			// EditAccountButton
 			// 
-			this.ChangeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.ChangeButton.Location = new System.Drawing.Point(484, 188);
-			this.ChangeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.ChangeButton.Name = "ChangeButton";
-			this.ChangeButton.Size = new System.Drawing.Size(526, 35);
-			this.ChangeButton.TabIndex = 8;
-			this.ChangeButton.Text = "Change...";
-			this.ChangeButton.UseVisualStyleBackColor = true;
+			this.EditAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.EditAccountButton.Location = new System.Drawing.Point(484, 187);
+			this.EditAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.EditAccountButton.Name = "EditAccountButton";
+			this.EditAccountButton.Size = new System.Drawing.Size(526, 35);
+			this.EditAccountButton.TabIndex = 8;
+			this.EditAccountButton.Text = "Edit";
+			this.EditAccountButton.UseVisualStyleBackColor = true;
+			this.EditAccountButton.Click += new System.EventHandler(this.EditAccountButton_Click);
 			// 
 			// ShowHistoryButton
 			// 
@@ -179,7 +182,6 @@
 			this.EmailTextBox.Location = new System.Drawing.Point(603, 65);
 			this.EmailTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.EmailTextBox.Name = "EmailTextBox";
-			this.EmailTextBox.ReadOnly = true;
 			this.EmailTextBox.Size = new System.Drawing.Size(406, 26);
 			this.EmailTextBox.TabIndex = 11;
 			// 
@@ -189,7 +191,6 @@
 			this.LoginTextBox.Location = new System.Drawing.Point(603, 106);
 			this.LoginTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.LoginTextBox.Name = "LoginTextBox";
-			this.LoginTextBox.ReadOnly = true;
 			this.LoginTextBox.Size = new System.Drawing.Size(406, 26);
 			this.LoginTextBox.TabIndex = 12;
 			// 
@@ -201,7 +202,6 @@
 			this.PasswordTextBox.Name = "PasswordTextBox";
 			this.PasswordTextBox.Size = new System.Drawing.Size(406, 26);
 			this.PasswordTextBox.TabIndex = 13;
-			this.PasswordTextBox.Text = "Copy";
 			// 
 			// RemoveAccountButton
 			// 
@@ -214,20 +214,21 @@
 			this.RemoveAccountButton.TabIndex = 14;
 			this.RemoveAccountButton.Text = "Remove Account";
 			this.RemoveAccountButton.UseVisualStyleBackColor = false;
+			this.RemoveAccountButton.Click += new System.EventHandler(this.RemoveAccountButton_Click);
 			// 
 			// ApplicationForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.GrayText;
-			this.ClientSize = new System.Drawing.Size(1029, 571);
+			this.ClientSize = new System.Drawing.Size(1023, 571);
 			this.Controls.Add(this.RemoveAccountButton);
 			this.Controls.Add(this.PasswordTextBox);
 			this.Controls.Add(this.LoginTextBox);
 			this.Controls.Add(this.EmailTextBox);
 			this.Controls.Add(this.AddAccountButton);
 			this.Controls.Add(this.ShowHistoryButton);
-			this.Controls.Add(this.ChangeButton);
+			this.Controls.Add(this.EditAccountButton);
 			this.Controls.Add(this.PasswordLabel);
 			this.Controls.Add(this.LoginLabel);
 			this.Controls.Add(this.EmailLabel);
@@ -237,6 +238,7 @@
 			this.Controls.Add(this.RemoveResourceButton);
 			this.Controls.Add(this.AddResourceButton);
 			this.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "ApplicationForm";
@@ -256,7 +258,7 @@
 		private System.Windows.Forms.Label EmailLabel;
 		private System.Windows.Forms.Label LoginLabel;
 		private System.Windows.Forms.Label PasswordLabel;
-		private System.Windows.Forms.Button ChangeButton;
+		private System.Windows.Forms.Button EditAccountButton;
 		private System.Windows.Forms.Button ShowHistoryButton;
 		private System.Windows.Forms.Button AddAccountButton;
 		private System.Windows.Forms.TextBox EmailTextBox;
