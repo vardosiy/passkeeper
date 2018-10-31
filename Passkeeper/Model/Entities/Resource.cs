@@ -2,9 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 
-using Passkeeper.Types;
-
-namespace Passkeeper.Core
+namespace Passkeeper.Model.Entities
 {
 	public class Resource
 	{
@@ -27,10 +25,7 @@ namespace Passkeeper.Core
 			m_accounts.Add( _account );
 		}
 
-		public int AccountsCount
-		{
-			get => m_accounts.Count;
-		}
+		public int AccountsCount => m_accounts.Count;
 
 		public Account GetAccount( int _index )
 		{
@@ -42,9 +37,16 @@ namespace Passkeeper.Core
 			m_accounts.Remove( _account );
 		}
 
+		// TODO
 		public List< HistoryRecord > GetAccountHistory( int _index )
 		{
 			return null;
+		}
+
+		// TODO
+		public void DeleteAccountHistory( Account _account )
+		{
+			return;
 		}
 
 		public override string ToString()

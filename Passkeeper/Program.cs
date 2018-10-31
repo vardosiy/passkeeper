@@ -16,7 +16,14 @@ namespace Passkeeper
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault( false );
-			Application.Run( new ApplicationForm() );
+
+			Model.Controller controller = new Model.Controller();
+			View.Forms.ApplicationForm mainForm = new View.Forms.ApplicationForm();
+
+			Presenters.ApplicationPresenter presenter =
+				new Presenters.ApplicationPresenter( mainForm, controller );
+
+			Application.Run( mainForm );
 		}
 	}
 }

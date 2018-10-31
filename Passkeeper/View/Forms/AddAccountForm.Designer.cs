@@ -1,4 +1,4 @@
-﻿namespace Passkeeper.Gui.Forms
+﻿namespace Passkeeper.View.Forms
 {
 	partial class AddAccountForm
 	{

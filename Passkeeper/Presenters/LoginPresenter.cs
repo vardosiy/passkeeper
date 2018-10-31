@@ -4,18 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Passkeeper.Core
+namespace Passkeeper.Presenters
 {
-	class PasswordChecker
+	class LoginPresenter
 	{
-		public void ReadPassword()
-		{
 
-		}
-
-		private void CheckPassword()
-		{
-
-		}
 	}
 }

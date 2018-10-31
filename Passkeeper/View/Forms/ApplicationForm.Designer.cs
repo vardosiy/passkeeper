@@ -1,4 +1,4 @@
-﻿namespace Passkeeper
+﻿namespace Passkeeper.View.Forms
 {
 	partial class ApplicationForm
 	{
@@ -86,7 +86,7 @@
 			// 
 			// ResourceList
 			// 
-			this.ResourceList.BackColor = System.Drawing.SystemColors.GrayText;
+			this.ResourceList.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.ResourceList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.ResourceList.FormattingEnabled = true;
 			this.ResourceList.ItemHeight = 20;

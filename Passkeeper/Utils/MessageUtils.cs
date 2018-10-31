@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
-namespace Passkeeper.Gui
+namespace Passkeeper.Utils
 {
-	static class GuiUtils
+	static class MessageUtils
 	{
 		static public DialogResult ShowWarning( string _message )
 		{

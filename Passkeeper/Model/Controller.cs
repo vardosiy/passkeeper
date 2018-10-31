@@ -1,31 +1,22 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Passkeeper.Core
+using Passkeeper.Model.Entities;
+
+namespace Passkeeper.Model
 {
 	public class Controller
 	{
 		private BindingList< Resource > m_resources = new BindingList< Resource >();
 
-		public void BindTo( ListBox _listBox )
-		{
-			_listBox.DataSource = m_resources;
-		}
-
-		public void LoadData()
-		{
-
-		}
+		public object DataContainer => m_resources;
 
 		public void AddResource( Resource _resource )
 		{
 			m_resources.Add( _resource );
 		}
 
-		public int ResourcesCount
-		{
-			get => m_resources.Count;
-		}
+		public int ResourcesCount => m_resources.Count;
 
 		public Resource GetResource( int _index )
 		{
@@ -35,6 +26,11 @@ namespace Passkeeper.Core
 		public void RemoveResource( Resource _resource )
 		{
 			m_resources.Remove( _resource );
+		}
+
+		public void BindTo( ListBox _listBox )
+		{
+			_listBox.DataSource = m_resources;
 		}
 	}
 }

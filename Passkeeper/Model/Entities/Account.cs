@@ -1,7 +1,8 @@
 ﻿using System;
 
-namespace Passkeeper.Types
+namespace Passkeeper.Model.Entities
 {
+	[Serializable]
 	public class Account
 	{
 		public string Email { get; set; }
@@ -9,8 +10,6 @@ namespace Passkeeper.Types
 		public string Login { get; set; }
 
 		public string Password { get; set; }
-
-		#region Constructors
 
 		public Account( string _email, string _login, string _password )
 		{
@@ -33,8 +32,6 @@ namespace Passkeeper.Types
 			Login = _account.Login;
 			Password = _account.Password;
 		}
-
-		#endregion
 
 		public override string ToString()
 		{
