@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 using Passkeeper.Model.Entities;
@@ -8,6 +9,13 @@ namespace Passkeeper.Model
 	public class Controller
 	{
 		private BindingList< Resource > m_resources = new BindingList< Resource >();
+
+		private string Username { get; set; }
+
+		public void LoadData( string _username )
+		{
+			throw new NotImplementedException();
+		}
 
 		public object DataContainer => m_resources;
 
@@ -28,9 +36,9 @@ namespace Passkeeper.Model
 			m_resources.Remove( _resource );
 		}
 
-		public void BindTo( ListBox _listBox )
+		public void BindTo( ListControl _listControl )
 		{
-			_listBox.DataSource = m_resources;
+			_listControl.DataSource = m_resources;
 		}
 	}
 }

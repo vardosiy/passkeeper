@@ -48,6 +48,9 @@
 			// 
 			// AddResourceButton
 			// 
+			this.AddResourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.AddResourceButton.BackColor = System.Drawing.Color.LimeGreen;
 			this.AddResourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.AddResourceButton.Location = new System.Drawing.Point(16, 14);
@@ -61,6 +64,9 @@
 			// 
 			// RemoveResourceButton
 			// 
+			this.RemoveResourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.RemoveResourceButton.BackColor = System.Drawing.Color.Teal;
 			this.RemoveResourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.RemoveResourceButton.Location = new System.Drawing.Point(250, 14);
@@ -86,6 +92,9 @@
 			// 
 			// ResourceList
 			// 
+			this.ResourceList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.ResourceList.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.ResourceList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.ResourceList.FormattingEnabled = true;
@@ -162,6 +171,7 @@
 			this.ShowHistoryButton.TabIndex = 9;
 			this.ShowHistoryButton.Text = "Show History...";
 			this.ShowHistoryButton.UseVisualStyleBackColor = true;
+			this.ShowHistoryButton.Click += new System.EventHandler(this.ShowHistoryButton_Click);
 			// 
 			// AddAccountButton
 			// 

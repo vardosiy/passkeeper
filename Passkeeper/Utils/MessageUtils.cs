@@ -13,5 +13,15 @@ namespace Passkeeper.Utils
 				,	MessageBoxIcon.Warning
 			);
 		}
+
+		static public DialogResult ShowError( string _message )
+		{
+			return MessageBox.Show(
+					_message
+				,	"Error"
+				,	MessageBoxButtons.OK
+				,	MessageBoxIcon.Error
+			);
+		}
 	}
 }

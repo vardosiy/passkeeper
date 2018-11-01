@@ -1,29 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Passkeeper.Gui.Forms
+namespace Passkeeper.View.Forms
 {
-	public partial class LoginForm : Form
+	public partial class LoginForm : Form, Interfaces.ILoginForm
 	{
-		Func< string, bool > OKClickHandler;
+		public string Username => UsernameTextBox.Text;
+		public string Password => PasswordTextBox.Text;
 
-		public LoginForm( Func< string, bool > _handler )
+		public event EventHandler OKButton_Clicked;
+
+		public LoginForm()
 		{
 			InitializeComponent();
-
-			OKClickHandler = _handler;
 		}
 
 		private void OKButton_Click( object _sender, EventArgs _e )
 		{
-			OKClickHandler( InputTextBox.Text );
+			OKButton_Clicked?.Invoke( _sender, _e );
 		}
 	}
 }

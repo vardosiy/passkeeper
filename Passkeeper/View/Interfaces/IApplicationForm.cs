@@ -3,15 +3,19 @@ using System.Windows.Forms;
 
 namespace Passkeeper.View.Interfaces
 {
-	public interface IApplicationForm
+	public interface IApplicationForm : IView
 	{
 		object SelectedResource { get; }
 		object SelectedAccount { get; }
 
-		ListBox ResourceDisplayingContainer { get; }
+		ListControl ResourcesList { get; }
+		ListControl AccountsList { get; }
+
+		event EventHandler Load;
 
 		event EventHandler AddResourceButton_Clicked;
 		event EventHandler RemoveResourceButton_Clicked;
+		event EventHandler SelectedResourceChanged;
 
 		event EventHandler AddAccountButton_Clicked;
 		event EventHandler EditAccountButton_Clicked;

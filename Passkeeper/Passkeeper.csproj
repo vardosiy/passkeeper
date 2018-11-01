@@ -46,68 +46,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\FileProcessor.cs" />
-    <Compile Include="Core\Resource.cs" />
-    <Compile Include="Gui\Forms\EditAccountForm.cs">
+    <Compile Include="Model\FileProcessor.cs" />
+    <Compile Include="Model\Entities\Resource.cs" />
+    <Compile Include="Presenters\IPresenter.cs" />
+    <Compile Include="View\Forms\EditAccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gui\Forms\EditAccountForm.Designer.cs">
+    <Compile Include="View\Forms\EditAccountForm.Designer.cs">
       <DependentUpon>EditAccountForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Forms\LoginForm.cs">
+    <Compile Include="View\Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gui\Forms\LoginForm.Designer.cs">
+    <Compile Include="View\Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Interfaces\IAddAccountForm.cs" />
-    <Compile Include="Gui\Interfaces\IAddResourceForm.cs" />
-    <Compile Include="Gui\Interfaces\IApplicationForm.cs" />
-    <Compile Include="Gui\Interfaces\IEditAccountForm.cs" />
-    <Compile Include="Gui\Interfaces\ILoginForm.cs" />
+    <Compile Include="View\Interfaces\IAddAccountForm.cs" />
+    <Compile Include="View\Interfaces\IAddResourceForm.cs" />
+    <Compile Include="View\Interfaces\IApplicationForm.cs" />
+    <Compile Include="View\Interfaces\IEditAccountForm.cs" />
+    <Compile Include="View\Interfaces\ILoginForm.cs" />
     <Compile Include="Presenters\AddAccountPresetner.cs" />
     <Compile Include="Presenters\AddResourcePresenter.cs" />
     <Compile Include="Presenters\ApplicationPresenter.cs" />
     <Compile Include="Presenters\EditAccountPresenter.cs" />
     <Compile Include="Presenters\LoginPresenter.cs" />
-    <Compile Include="Types\Account.cs" />
-    <Compile Include="Core\Controller.cs" />
-    <Compile Include="Core\PasswordChecker.cs" />
-    <Compile Include="Gui\Forms\AddAccountForm.cs">
+    <Compile Include="Model\Entities\Account.cs" />
+    <Compile Include="Model\Controller.cs" />
+    <Compile Include="Model\UserManager.cs" />
+    <Compile Include="View\Forms\AddAccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gui\Forms\AddAccountForm.Designer.cs">
+    <Compile Include="View\Forms\AddAccountForm.Designer.cs">
       <DependentUpon>AddAccountForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Forms\AddResourceForm.cs">
+    <Compile Include="View\Forms\AddResourceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gui\Forms\AddResourceForm.Designer.cs">
+    <Compile Include="View\Forms\AddResourceForm.Designer.cs">
       <DependentUpon>AddResourceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\Forms\ApplicationForm.cs">
+    <Compile Include="View\Forms\ApplicationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gui\Forms\ApplicationForm.Designer.cs">
+    <Compile Include="View\Forms\ApplicationForm.Designer.cs">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\MessageUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\HistoryRecord.cs" />
-    <EmbeddedResource Include="Gui\Forms\AddAccountForm.resx">
+    <Compile Include="Model\Entities\HistoryRecord.cs" />
+    <Compile Include="View\Interfaces\IView.cs" />
+    <EmbeddedResource Include="View\Forms\AddAccountForm.resx">
       <DependentUpon>AddAccountForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Forms\AddResourceForm.resx">
+    <EmbeddedResource Include="View\Forms\AddResourceForm.resx">
       <DependentUpon>AddResourceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Forms\ApplicationForm.resx">
+    <EmbeddedResource Include="View\Forms\ApplicationForm.resx">
       <DependentUpon>ApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Forms\EditAccountForm.resx">
+    <EmbeddedResource Include="View\Forms\EditAccountForm.resx">
       <DependentUpon>EditAccountForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\Forms\LoginForm.resx">
+    <EmbeddedResource Include="View\Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -133,7 +135,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Gui\Resources\AppIcon.ico" />
+    <Content Include="View\Resources\AppIcon.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

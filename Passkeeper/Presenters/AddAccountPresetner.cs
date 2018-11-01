@@ -5,7 +5,7 @@ using Passkeeper.View.Interfaces;
 
 namespace Passkeeper.Presenters
 {
-	public class AddAccountPresetner
+	public class AddAccountPresetner : IPresenter
 	{
 		readonly private IAddAccountForm m_form;
 
@@ -23,10 +23,15 @@ namespace Passkeeper.Presenters
 			m_form.CancelButton_Clicked += CancelButton_Clicked;
 		}
 
+		public void Run()
+		{
+			m_form.ShowDialog();
+		}
+
 		private void OKButton_Clicked( object _sender, EventArgs _e )
 		{
 			if (	m_form.Password == string.Empty
-				||	( m_form.Email == string.Empty && m_form.Login == string.Empty )
+				||	m_form.Email == string.Empty && m_form.Login == string.Empty
 			)
 			{
 				m_form.Close();

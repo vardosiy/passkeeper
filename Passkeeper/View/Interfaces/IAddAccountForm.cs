@@ -2,7 +2,7 @@
 
 namespace Passkeeper.View.Interfaces
 {
-	public interface IAddAccountForm
+	public interface IAddAccountForm : IView
 	{
 		string Email { get; }
 		string Login { get; }
@@ -10,7 +10,5 @@ namespace Passkeeper.View.Interfaces
 
 		event EventHandler OKButton_Clicked;
 		event EventHandler CancelButton_Clicked;
-
-		void Close();
 	}
 }

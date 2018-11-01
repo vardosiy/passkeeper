@@ -6,7 +6,7 @@ using Passkeeper.View.Interfaces;
 
 namespace Passkeeper.Presenters
 {
-	public class AddResourcePresenter
+	public class AddResourcePresenter : IPresenter
 	{
 		readonly private IAddResourceForm m_form;
 
@@ -22,6 +22,11 @@ namespace Passkeeper.Presenters
 
 			m_form.OKButton_Clicked += OKButton_Clicked;
 			m_form.CancelButton_Clicked += CancelButton_Clicked;
+		}
+
+		public void Run()
+		{
+			m_form.ShowDialog();
 		}
 
 		private void OKButton_Clicked( object _sender, EventArgs _e )

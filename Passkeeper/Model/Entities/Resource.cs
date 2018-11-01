@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -15,9 +16,9 @@ namespace Passkeeper.Model.Entities
 			Name = _name;
 		}
 
-		public void BindTo( ComboBox _comboBox )
+		public void BindTo( ListControl _listControl )
 		{
-			_comboBox.DataSource = m_accounts;
+			_listControl.DataSource = m_accounts;
 		}
 
 		public void AddAccount( Account _account )

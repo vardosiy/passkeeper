@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Passkeeper
@@ -17,13 +14,12 @@ namespace Passkeeper
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault( false );
 
-			Model.Controller controller = new Model.Controller();
-			View.Forms.ApplicationForm mainForm = new View.Forms.ApplicationForm();
+			Presenters.ApplicationPresenter presenter = new Presenters.ApplicationPresenter(
+					new View.Forms.ApplicationForm()
+				,	new Model.Controller()
+			);
 
-			Presenters.ApplicationPresenter presenter =
-				new Presenters.ApplicationPresenter( mainForm, controller );
-
-			Application.Run( mainForm );
+			presenter.Run();
 		}
 	}
 }
