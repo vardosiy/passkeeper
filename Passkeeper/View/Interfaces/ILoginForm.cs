@@ -4,9 +4,9 @@ namespace Passkeeper.View.Interfaces
 {
 	public interface ILoginForm : IView
 	{
-		string Username { get; }
 		string Password { get; }
 
+		event System.Windows.Forms.FormClosedEventHandler FormClosed;
 		event EventHandler OKButton_Clicked;
 	}
 }

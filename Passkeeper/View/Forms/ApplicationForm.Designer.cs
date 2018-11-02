@@ -51,7 +51,8 @@
 			this.AddResourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.AddResourceButton.BackColor = System.Drawing.Color.LimeGreen;
+			this.AddResourceButton.BackColor = System.Drawing.Color.Teal;
+			this.AddResourceButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.AddResourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.AddResourceButton.Location = new System.Drawing.Point(16, 14);
 			this.AddResourceButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -67,7 +68,8 @@
 			this.RemoveResourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.RemoveResourceButton.BackColor = System.Drawing.Color.Teal;
+			this.RemoveResourceButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.RemoveResourceButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.RemoveResourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.RemoveResourceButton.Location = new System.Drawing.Point(250, 14);
 			this.RemoveResourceButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -80,6 +82,8 @@
 			// 
 			// ClearHistoryButton
 			// 
+			this.ClearHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.ClearHistoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.ClearHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ClearHistoryButton.Location = new System.Drawing.Point(484, 277);
 			this.ClearHistoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -87,7 +91,7 @@
 			this.ClearHistoryButton.Size = new System.Drawing.Size(526, 35);
 			this.ClearHistoryButton.TabIndex = 2;
 			this.ClearHistoryButton.Text = "Clear History";
-			this.ClearHistoryButton.UseVisualStyleBackColor = true;
+			this.ClearHistoryButton.UseVisualStyleBackColor = false;
 			this.ClearHistoryButton.Click += new System.EventHandler(this.ClearHistoryButton_Click);
 			// 
 			// ResourceList
@@ -95,22 +99,24 @@
 			this.ResourceList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.ResourceList.BackColor = System.Drawing.SystemColors.ControlDark;
-			this.ResourceList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.ResourceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.ResourceList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.ResourceList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.ResourceList.FormattingEnabled = true;
 			this.ResourceList.ItemHeight = 20;
 			this.ResourceList.Location = new System.Drawing.Point(18, 58);
 			this.ResourceList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ResourceList.Name = "ResourceList";
-			this.ResourceList.Size = new System.Drawing.Size(456, 502);
+			this.ResourceList.Size = new System.Drawing.Size(456, 500);
 			this.ResourceList.Sorted = true;
 			this.ResourceList.TabIndex = 3;
 			this.ResourceList.SelectedIndexChanged += new System.EventHandler(this.ResourceList_SelectedIndexChanged);
 			// 
 			// ResourceAccountsComboBox
 			// 
-			this.ResourceAccountsComboBox.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.ResourceAccountsComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.ResourceAccountsComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.ResourceAccountsComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.ResourceAccountsComboBox.FormattingEnabled = true;
 			this.ResourceAccountsComboBox.Location = new System.Drawing.Point(484, 17);
 			this.ResourceAccountsComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -151,6 +157,8 @@
 			// 
 			// EditAccountButton
 			// 
+			this.EditAccountButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.EditAccountButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.EditAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.EditAccountButton.Location = new System.Drawing.Point(484, 187);
 			this.EditAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -158,11 +166,13 @@
 			this.EditAccountButton.Size = new System.Drawing.Size(526, 35);
 			this.EditAccountButton.TabIndex = 8;
 			this.EditAccountButton.Text = "Edit";
-			this.EditAccountButton.UseVisualStyleBackColor = true;
+			this.EditAccountButton.UseVisualStyleBackColor = false;
 			this.EditAccountButton.Click += new System.EventHandler(this.EditAccountButton_Click);
 			// 
 			// ShowHistoryButton
 			// 
+			this.ShowHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.ShowHistoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.ShowHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.ShowHistoryButton.Location = new System.Drawing.Point(484, 232);
 			this.ShowHistoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -170,12 +180,13 @@
 			this.ShowHistoryButton.Size = new System.Drawing.Size(526, 35);
 			this.ShowHistoryButton.TabIndex = 9;
 			this.ShowHistoryButton.Text = "Show History...";
-			this.ShowHistoryButton.UseVisualStyleBackColor = true;
+			this.ShowHistoryButton.UseVisualStyleBackColor = false;
 			this.ShowHistoryButton.Click += new System.EventHandler(this.ShowHistoryButton_Click);
 			// 
 			// AddAccountButton
 			// 
-			this.AddAccountButton.BackColor = System.Drawing.Color.LimeGreen;
+			this.AddAccountButton.BackColor = System.Drawing.Color.Teal;
+			this.AddAccountButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.AddAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.AddAccountButton.Location = new System.Drawing.Point(831, 14);
 			this.AddAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -188,7 +199,9 @@
 			// 
 			// EmailTextBox
 			// 
-			this.EmailTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.EmailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.EmailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.EmailTextBox.Location = new System.Drawing.Point(603, 65);
 			this.EmailTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.EmailTextBox.Name = "EmailTextBox";
@@ -197,7 +210,9 @@
 			// 
 			// LoginTextBox
 			// 
-			this.LoginTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.LoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.LoginTextBox.Location = new System.Drawing.Point(603, 106);
 			this.LoginTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.LoginTextBox.Name = "LoginTextBox";
@@ -206,7 +221,9 @@
 			// 
 			// PasswordTextBox
 			// 
-			this.PasswordTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.PasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PasswordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.PasswordTextBox.Location = new System.Drawing.Point(603, 148);
 			this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.PasswordTextBox.Name = "PasswordTextBox";
@@ -215,7 +232,8 @@
 			// 
 			// RemoveAccountButton
 			// 
-			this.RemoveAccountButton.BackColor = System.Drawing.Color.Teal;
+			this.RemoveAccountButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.RemoveAccountButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.RemoveAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.RemoveAccountButton.Location = new System.Drawing.Point(484, 322);
 			this.RemoveAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -230,7 +248,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.SystemColors.GrayText;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(47)))));
 			this.ClientSize = new System.Drawing.Size(1023, 571);
 			this.Controls.Add(this.RemoveAccountButton);
 			this.Controls.Add(this.PasswordTextBox);
@@ -248,6 +266,7 @@
 			this.Controls.Add(this.RemoveResourceButton);
 			this.Controls.Add(this.AddResourceButton);
 			this.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

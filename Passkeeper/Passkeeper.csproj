@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Model\FileProcessor.cs" />
     <Compile Include="Model\Entities\Resource.cs" />
+    <Compile Include="Model\PasswordChecker.cs" />
     <Compile Include="Presenters\IPresenter.cs" />
     <Compile Include="View\Forms\EditAccountForm.cs">
       <SubType>Form</SubType>

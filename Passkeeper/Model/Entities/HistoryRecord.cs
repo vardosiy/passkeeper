@@ -17,7 +17,7 @@ namespace Passkeeper.Model.Entities
 				string _email
 			,	string _login
 			,	string _password
-			,	DateTime _changeTime 
+			,	DateTime _changeTime
 		)
 			:	base( _email, _login, _password )
 		{

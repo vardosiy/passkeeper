@@ -37,7 +37,8 @@
 			// 
 			// OkButton
 			// 
-			this.OkButton.BackColor = System.Drawing.Color.LimeGreen;
+			this.OkButton.BackColor = System.Drawing.Color.Teal;
+			this.OkButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.OkButton.Location = new System.Drawing.Point(262, 106);
 			this.OkButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -50,8 +51,9 @@
 			// 
 			// CancelButton
 			// 
-			this.CancelButton.BackColor = System.Drawing.Color.Teal;
+			this.CancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.CancelButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.CancelButton.Location = new System.Drawing.Point(382, 106);
 			this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -64,7 +66,8 @@
 			// 
 			// ResourceNameTextBox
 			// 
-			this.ResourceNameTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.ResourceNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.ResourceNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.ResourceNameTextBox.Location = new System.Drawing.Point(13, 52);
 			this.ResourceNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ResourceNameTextBox.Name = "ResourceNameTextBox";
@@ -87,13 +90,14 @@
 			this.AcceptButton = this.OkButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.SystemColors.GrayText;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(47)))));
 			this.ClientSize = new System.Drawing.Size(507, 155);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.ResourceNameTextBox);
 			this.Controls.Add(this.CancelButton);
 			this.Controls.Add(this.OkButton);
 			this.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

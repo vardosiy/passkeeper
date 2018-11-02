@@ -5,7 +5,6 @@ namespace Passkeeper.View.Forms
 {
 	public partial class LoginForm : Form, Interfaces.ILoginForm
 	{
-		public string Username => UsernameTextBox.Text;
 		public string Password => PasswordTextBox.Text;
 
 		public event EventHandler OKButton_Clicked;

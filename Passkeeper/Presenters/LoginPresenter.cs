@@ -7,16 +7,22 @@ namespace Passkeeper.Presenters
 {
 	public class LoginPresenter : IPresenter
 	{
-		private UserManager m_userManager = new UserManager();
+		private readonly Func<LoginPresenter, bool> m_formClosedCallback;
 		private readonly ILoginForm m_form;
 
-		public event Action CorrectPasswordEntered;
+		private PasswordChecker m_passwordChecker = new PasswordChecker();
 
-		public LoginPresenter( ILoginForm _form )
+		public bool LogedIn { get; private set; }
+
+		public LoginPresenter( ILoginForm _form, Func< LoginPresenter, bool > _callback )
 		{
 			m_form = _form;
+			m_formClosedCallback = _callback;
+
+			LogedIn = false;
 
 			m_form.OKButton_Clicked += OKButton_Clicked;
+			m_form.FormClosed += FormClosed;
 		}
 
 		public void Run()
@@ -26,10 +32,18 @@ namespace Passkeeper.Presenters
 
 		private void OKButton_Clicked( object _sender, EventArgs _e )
 		{
-			if ( m_userManager.CheckPassword( m_form.Username, m_form.Password ) )
-				CorrectPasswordEntered?.Invoke();
+			if ( m_passwordChecker.CheckPassword( m_form.Password ) )
+			{
+				LogedIn = true;
+				m_form.Close();
+			}
 			else
 				Utils.MessageUtils.ShowError( "Invalid password!" );
+		}
+
+		private void FormClosed( object _sender, System.Windows.Forms.FormClosedEventArgs _e )
+		{
+			m_formClosedCallback( this );
 		}
 	}
 }

@@ -12,7 +12,7 @@ namespace Passkeeper.Presenters
 	{
 		private Controller m_controller;
 		private IApplicationForm m_form;
-
+		
 		public ApplicationPresenter(
 				IApplicationForm _form
 			,	Controller _controller
@@ -41,16 +41,18 @@ namespace Passkeeper.Presenters
 
 		private void Form_Load( object _sender, EventArgs _e )
 		{
-			LoginPresenter presenter = new LoginPresenter( new LoginForm() );
+			LoginPresenter presenter = new LoginPresenter(
+					new LoginForm()
+				,	( _presenter ) =>
+					{
+						if ( !_presenter.LogedIn )
+							m_form.Close();
 
-			presenter.CorrectPasswordEntered += CorrectPasswordEntered;
+						return true;
+					}
+			);
 
 			presenter.Run();
-		}
-
-		private void CorrectPasswordEntered()
-		{
-			throw new NotImplementedException();
 		}
 
 		private void AddResourceButton_Clicked( object _sender, EventArgs _e )
