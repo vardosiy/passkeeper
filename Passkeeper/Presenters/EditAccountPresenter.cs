@@ -8,8 +8,11 @@ namespace Passkeeper.Presenters
 	public class EditAccountPresenter : IPresenter
 	{
 		readonly private IEditAccountForm m_form;
-
 		private Account m_selectedAccount;
+
+		public Account Result { get; private set;}
+
+		//---------------------------------------------------------------------
 
 		public EditAccountPresenter(
 				Account _selectedAccount
@@ -28,6 +31,8 @@ namespace Passkeeper.Presenters
 			m_form.ShowDialog();
 		}
 
+		//---------------------------------------------------------------------
+
 		private void OKButton_Clicked( object _sender, EventArgs _e )
 		{
 			if (	m_form.Password == string.Empty
@@ -43,9 +48,14 @@ namespace Passkeeper.Presenters
 				return;
 			}
 
-			m_selectedAccount.Email = m_form.Email;
-			m_selectedAccount.Login = m_form.Login;
-			m_selectedAccount.Password = m_form.Password;
+			if ( !IsAccountChanged() )
+				Result = m_selectedAccount;
+			else
+				Result = new Account( m_form.Email, m_form.Login, m_form.Password );
+
+			//m_selectedAccount.Email = m_form.Email;
+			//m_selectedAccount.Login = m_form.Login;
+			//m_selectedAccount.Password = m_form.Password;
 
 			m_form.Close();
 		}
@@ -54,5 +64,17 @@ namespace Passkeeper.Presenters
 		{
 			m_form.Close();
 		}
+
+		//---------------------------------------------------------------------
+
+		private bool IsAccountChanged()
+		{
+			return	m_selectedAccount.Email != m_form.Email
+				||	m_selectedAccount.Login != m_form.Login
+				||	m_selectedAccount.Password != m_form.Password
+			;
+		}
+
+		//---------------------------------------------------------------------
 	}
 }

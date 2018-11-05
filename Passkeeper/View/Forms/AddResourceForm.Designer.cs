@@ -68,6 +68,7 @@
 			// 
 			this.ResourceNameTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.ResourceNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.ResourceNameTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.ResourceNameTextBox.Location = new System.Drawing.Point(13, 52);
 			this.ResourceNameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ResourceNameTextBox.Name = "ResourceNameTextBox";

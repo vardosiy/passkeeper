@@ -7,6 +7,8 @@ namespace Passkeeper.Model.Entities
 	{
 		public DateTime ChangeTime { get; private set; }
 
+		//---------------------------------------------------------------------
+
 		public HistoryRecord( Account _account, DateTime _changeTime )
 			:	base( _account )
 		{
@@ -23,5 +25,7 @@ namespace Passkeeper.Model.Entities
 		{
 			ChangeTime = _changeTime;
 		}
+
+		//---------------------------------------------------------------------
 	}
 }

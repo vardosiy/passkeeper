@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Passkeeper.Model
 {
 	public class PasswordChecker
 	{
-		private string m_password;
+		private readonly string m_password;
 
 		public PasswordChecker()
 		{

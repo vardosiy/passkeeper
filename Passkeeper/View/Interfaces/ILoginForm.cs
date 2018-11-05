@@ -6,7 +6,7 @@ namespace Passkeeper.View.Interfaces
 	{
 		string Password { get; }
 
-		event System.Windows.Forms.FormClosedEventHandler FormClosed;
 		event EventHandler OKButton_Clicked;
+		event System.Windows.Forms.FormClosedEventHandler FormClosed;
 	}
 }

@@ -12,11 +12,10 @@ namespace Passkeeper.Presenters
 	{
 		private Controller m_controller;
 		private IApplicationForm m_form;
-		
-		public ApplicationPresenter(
-				IApplicationForm _form
-			,	Controller _controller
-		)
+
+		//---------------------------------------------------------------------
+
+		public ApplicationPresenter( IApplicationForm _form, Controller _controller )
 		{
 			m_controller = _controller;
 			m_form = _form;
@@ -29,15 +28,18 @@ namespace Passkeeper.Presenters
 
 			m_form.AddResourceButton_Clicked += AddResourceButton_Clicked;
 			m_form.EditAccountButton_Clicked += EditAccountButton_Clicked;
+			m_form.RemoveAccount_Clicked += RemoveAccount_Clicked;
+
 			m_form.ShowAccountHistory_Clicked += ShowAccountHistory_Clicked;
 			m_form.DeleteAccountHistory_Clicked += DeleteAccountHistory_Clicked;
-			m_form.RemoveAccount_Clicked += RemoveAccount_Clicked;
 		}
 
 		public void Run()
 		{
 			m_form.ShowDialog();
 		}
+
+		//---------------------------------------------------------------------
 
 		private void Form_Load( object _sender, EventArgs _e )
 		{
@@ -55,12 +57,14 @@ namespace Passkeeper.Presenters
 			presenter.Run();
 		}
 
+		//---------------------------------------------------------------------
+
 		private void AddResourceButton_Clicked( object _sender, EventArgs _e )
 		{
 			AddResourcePresenter presetner = new AddResourcePresenter( m_controller, new AddResourceForm() );
 			presetner.Run();
 
-			m_controller.BindTo( m_form.ResourcesList ); // TODO test once
+			m_controller.BindTo( m_form.ResourcesList );
 		}
 
 		private void RemoveResourceButton_Clicked( object _sender, EventArgs _e )
@@ -89,6 +93,8 @@ namespace Passkeeper.Presenters
 				m_form.AccountsList.Text = string.Empty;
 		}
 
+		//---------------------------------------------------------------------
+
 		private void AddAccountButton_Clicked( object _sender, EventArgs _e )
 		{
 			AddAccountPresetner presetner = new AddAccountPresetner(
@@ -110,23 +116,16 @@ namespace Passkeeper.Presenters
 			EditAccountPresenter presenter = new EditAccountPresenter( selectedAccount, form );
 
 			presenter.Run();
-		}
 
-		private void ShowAccountHistory_Clicked( object _sender, EventArgs _e )
-		{
-			throw new NotImplementedException();
-		}
-
-		private void DeleteAccountHistory_Clicked( object _sender, EventArgs _e )
-		{
-			DialogResult result = Utils.MessageUtils.ShowWarning(
-				"Are you sure, you want to clear history for this account?"
-			);
-
-			if ( result != DialogResult.OK )
+			if ( object.ReferenceEquals( presenter.Result, selectedAccount ) )
 				return;
 
-			throw new NotImplementedException();
+			Resource selectedResource = m_form.SelectedResource as Resource;
+
+			selectedResource.RemoveAccount( selectedAccount );
+			selectedResource.AddAccount( presenter.Result );
+
+			selectedResource.AddAccountHistoryRecord( new HistoryRecord( selectedAccount, DateTime.Now ) );
 		}
 
 		private void RemoveAccount_Clicked( object _sender, EventArgs _e )
@@ -141,5 +140,37 @@ namespace Passkeeper.Presenters
 			Resource selectedResource = m_form.SelectedResource as Resource;
 			selectedResource.RemoveAccount( m_form.SelectedAccount as Account );
 		}
+
+		//---------------------------------------------------------------------
+
+		private void ShowAccountHistory_Clicked( object _sender, EventArgs _e )
+		{
+			Account selectedAccount = m_form.SelectedAccount as Account;
+			Resource selectedResource = m_form.SelectedResource as Resource;
+
+			AccountHistoryPresenter presenter = new AccountHistoryPresenter(
+					new AccountHistoryForm()
+				, selectedResource.GetAccountHistory( selectedAccount )
+			);
+
+			presenter.Run();
+		}
+
+		private void DeleteAccountHistory_Clicked( object _sender, EventArgs _e )
+		{
+			DialogResult result = Utils.MessageUtils.ShowWarning(
+				"Are you sure, you want to clear history for this account?"
+			);
+
+			if ( result != DialogResult.OK )
+				return;
+
+			Account selectedAccount = m_form.SelectedAccount as Account;
+			Resource selectedResource = m_form.SelectedResource as Resource;
+
+			selectedResource.DeleteAccountHistory( selectedAccount );
+		}
+
+		//---------------------------------------------------------------------
 	}
 }

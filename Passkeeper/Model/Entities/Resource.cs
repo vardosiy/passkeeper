@@ -5,21 +5,21 @@ using System.Windows.Forms;
 
 namespace Passkeeper.Model.Entities
 {
-	public class Resource
+	[Serializable]
+	public class Resource : IComparable< Resource >
 	{
-		public string Name { get; set; }
-
 		private BindingList< Account > m_accounts = new BindingList< Account >();
+
+		public string Name { get; private set; }
+
+		//---------------------------------------------------------------------
 
 		public Resource( string _name )
 		{
 			Name = _name;
 		}
 
-		public void BindTo( ListControl _listControl )
-		{
-			_listControl.DataSource = m_accounts;
-		}
+		//---------------------------------------------------------------------
 
 		public void AddAccount( Account _account )
 		{
@@ -38,8 +38,21 @@ namespace Passkeeper.Model.Entities
 			m_accounts.Remove( _account );
 		}
 
+		public void BindTo( ListControl _listControl )
+		{
+			_listControl.DataSource = m_accounts;
+		}
+
+		//---------------------------------------------------------------------
+
 		// TODO
-		public List< HistoryRecord > GetAccountHistory( int _index )
+		public void AddAccountHistoryRecord( HistoryRecord _record )
+		{
+			return;
+		}
+
+		// TODO
+		public List< HistoryRecord > GetAccountHistory( Account _account )
 		{
 			return null;
 		}
@@ -50,9 +63,18 @@ namespace Passkeeper.Model.Entities
 			return;
 		}
 
+		//---------------------------------------------------------------------
+
 		public override string ToString()
 		{
 			return Name;
 		}
+
+		public int CompareTo( Resource _other )
+		{
+			return string.Compare( Name, _other.Name );
+		}
+
+		//---------------------------------------------------------------------
 	}
 }

@@ -9,6 +9,8 @@ namespace Passkeeper.Model.Entities
 		public string Login { get; set; }
 		public string Password { get; set; }
 
+		//---------------------------------------------------------------------
+
 		public Account( string _email, string _login, string _password )
 		{
 			Email = _email;
@@ -23,6 +25,8 @@ namespace Passkeeper.Model.Entities
 			Password = _account.Password;
 		}
 
+		//---------------------------------------------------------------------
+
 		public override string ToString()
 		{
 			if ( Email == string.Empty )
@@ -32,5 +36,7 @@ namespace Passkeeper.Model.Entities
 
 			return Email + " " + Login;
 		}
+
+		//---------------------------------------------------------------------
 	}
 }

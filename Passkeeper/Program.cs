@@ -14,6 +14,8 @@ namespace Passkeeper
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault( false );
 
+			//FileProcessor.SaveResource( null );
+
 			Presenters.ApplicationPresenter presenter = new Presenters.ApplicationPresenter(
 					new View.Forms.ApplicationForm()
 				,	new Model.Controller()

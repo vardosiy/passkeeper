@@ -43,6 +43,7 @@
 			// 
 			this.EmailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.EmailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.EmailTextBox.Location = new System.Drawing.Point(112, 12);
 			this.EmailTextBox.Name = "EmailTextBox";
 			this.EmailTextBox.Size = new System.Drawing.Size(290, 26);
@@ -52,6 +53,7 @@
 			// 
 			this.LoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.LoginTextBox.Location = new System.Drawing.Point(112, 56);
 			this.LoginTextBox.Name = "LoginTextBox";
 			this.LoginTextBox.Size = new System.Drawing.Size(290, 26);
@@ -61,6 +63,7 @@
 			// 
 			this.PasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PasswordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.PasswordTextBox.Location = new System.Drawing.Point(112, 100);
 			this.PasswordTextBox.Name = "PasswordTextBox";
 			this.PasswordTextBox.Size = new System.Drawing.Size(290, 26);

@@ -9,8 +9,9 @@ namespace Passkeeper.Presenters
 	public class AddResourcePresenter : IPresenter
 	{
 		readonly private IAddResourceForm m_form;
-
 		private Controller m_controller;
+
+		//---------------------------------------------------------------------
 
 		public AddResourcePresenter(
 				Controller _controller
@@ -28,6 +29,8 @@ namespace Passkeeper.Presenters
 		{
 			m_form.ShowDialog();
 		}
+
+		//---------------------------------------------------------------------
 
 		private void OKButton_Clicked( object _sender, EventArgs _e )
 		{
@@ -47,5 +50,7 @@ namespace Passkeeper.Presenters
 		{
 			m_form.Close();
 		}
+
+		//---------------------------------------------------------------------
 	}
 }

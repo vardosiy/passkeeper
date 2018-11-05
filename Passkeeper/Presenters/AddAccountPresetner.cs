@@ -8,8 +8,9 @@ namespace Passkeeper.Presenters
 	public class AddAccountPresetner : IPresenter
 	{
 		readonly private IAddAccountForm m_form;
-
 		private Resource m_selectedResource;
+
+		//---------------------------------------------------------------------
 
 		public AddAccountPresetner(
 				Resource _selectedResource
@@ -27,6 +28,8 @@ namespace Passkeeper.Presenters
 		{
 			m_form.ShowDialog();
 		}
+
+		//---------------------------------------------------------------------
 
 		private void OKButton_Clicked( object _sender, EventArgs _e )
 		{
@@ -48,5 +51,7 @@ namespace Passkeeper.Presenters
 		{
 			m_form.Close();
 		}
+
+		//---------------------------------------------------------------------
 	}
 }

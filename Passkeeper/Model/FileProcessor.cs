@@ -1,6 +1,6 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 using Passkeeper.Model.Entities;
@@ -9,22 +9,20 @@ namespace Passkeeper.Model
 {
 	public class FileProcessor
 	{
-		public static void SaveToFile( List< HistoryRecord > _historyRecords)
-		{
-			BinaryFormatter binaryFormatter = new BinaryFormatter();
+		//public static void SaveResources( List< Resource > _resource )
+		//{
+		//	MemoryStream memoryStream = new MemoryStream();
+		//	BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-			DateTime dateTime = new DateTime( 2018, 10, 29, 19, 43, 20 );
-			HistoryRecord record = new HistoryRecord( "aa", "bb", "cc", dateTime );
+		//	binaryFormatter.Serialize( memoryStream, _resource );
+		//	memoryStream.Position = 0;
+			
+		//	byte[] encrypted = AesCrypter.Encrypt( memoryStream.ToArray() );
+			
+		//	string savePath = Path.Combine( "data", _resource.Name.GetHashCode().ToString() );
 
-			using ( FileStream fs = new FileStream( "temp.dat", FileMode.OpenOrCreate ) )
-			{
-				binaryFormatter.Serialize( fs, record );
-			}
-
-			using ( FileStream fs = new FileStream( "temp.dat", FileMode.OpenOrCreate ) )
-			{
-				HistoryRecord newPerson = (HistoryRecord)binaryFormatter.Deserialize( fs );
-			}
-		}
+		//	using ( FileStream stream = new FileStream( savePath, FileMode.Truncate ) )
+		//		stream.Write( encrypted, 0, encrypted.Length );
+		//}
 	}
 }

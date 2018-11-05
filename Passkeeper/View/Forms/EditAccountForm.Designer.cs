@@ -71,8 +71,9 @@
 			// 
 			// CancelButton
 			// 
-			this.CancelButton.BackColor = System.Drawing.Color.Teal;
+			this.CancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.CancelButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.CancelButton.Location = new System.Drawing.Point(290, 148);
 			this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -85,7 +86,8 @@
 			// 
 			// OkButton
 			// 
-			this.OkButton.BackColor = System.Drawing.Color.LimeGreen;
+			this.OkButton.BackColor = System.Drawing.Color.Teal;
+			this.OkButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.OkButton.Location = new System.Drawing.Point(170, 148);
 			this.OkButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -98,7 +100,9 @@
 			// 
 			// PasswordTextBox
 			// 
-			this.PasswordTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.PasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.PasswordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.PasswordTextBox.Location = new System.Drawing.Point(112, 100);
 			this.PasswordTextBox.Name = "PasswordTextBox";
 			this.PasswordTextBox.Size = new System.Drawing.Size(290, 26);
@@ -106,7 +110,9 @@
 			// 
 			// LoginTextBox
 			// 
-			this.LoginTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.LoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.LoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.LoginTextBox.Location = new System.Drawing.Point(112, 56);
 			this.LoginTextBox.Name = "LoginTextBox";
 			this.LoginTextBox.Size = new System.Drawing.Size(290, 26);
@@ -114,7 +120,9 @@
 			// 
 			// EmailTextBox
 			// 
-			this.EmailTextBox.BackColor = System.Drawing.SystemColors.ControlDark;
+			this.EmailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
+			this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.EmailTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.EmailTextBox.Location = new System.Drawing.Point(112, 12);
 			this.EmailTextBox.Name = "EmailTextBox";
 			this.EmailTextBox.Size = new System.Drawing.Size(290, 26);
@@ -125,7 +133,7 @@
 			this.AcceptButton = this.OkButton;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.SystemColors.GrayText;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(47)))));
 			this.ClientSize = new System.Drawing.Size(414, 197);
 			this.Controls.Add(this.PasswordLabel);
 			this.Controls.Add(this.LoginLabel);
@@ -136,6 +144,7 @@
 			this.Controls.Add(this.LoginTextBox);
 			this.Controls.Add(this.EmailTextBox);
 			this.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+			this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
