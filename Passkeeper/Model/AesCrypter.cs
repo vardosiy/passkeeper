@@ -1,12 +1,12 @@
-﻿using System;
-
-using System.Text;
+﻿using System.Text;
 using System.Security.Cryptography;
 
 namespace Passkeeper.Model
 {
 	public class AesCrypter
 	{
+		//---------------------------------------------------------------------
+
 		private const string IV = "qo1lc3sjd8zpt9cx"; // 128 bytes
 		private const string Key = "ow7dxys8glfor9tnc2ansdfo1etkfjcv"; // 256 bytes
 

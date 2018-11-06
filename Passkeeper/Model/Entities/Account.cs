@@ -5,6 +5,8 @@ namespace Passkeeper.Model.Entities
 	[Serializable]
 	public class Account
 	{
+		//---------------------------------------------------------------------
+
 		public string Email { get; set; }
 		public string Login { get; set; }
 		public string Password { get; set; }

@@ -7,6 +7,8 @@ namespace Passkeeper.Presenters
 {
 	public class LoginPresenter : IPresenter
 	{
+		//---------------------------------------------------------------------
+
 		private readonly Func< LoginPresenter, bool > m_formClosedCallback;
 		private readonly ILoginForm m_form;
 

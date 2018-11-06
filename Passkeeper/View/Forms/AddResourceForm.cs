@@ -5,15 +5,23 @@ namespace Passkeeper.View.Forms
 {
 	public partial class AddResourceForm : Form, Interfaces.IAddResourceForm
 	{
+		//---------------------------------------------------------------------
+
 		public string ResourceName => ResourceNameTextBox.Text;
+
+		//---------------------------------------------------------------------
 
 		public event EventHandler OKButton_Clicked;
 		public event EventHandler CancelButton_Clicked;
+
+		//---------------------------------------------------------------------
 
 		public AddResourceForm()
 		{
 			InitializeComponent();
 		}
+
+		//---------------------------------------------------------------------
 
 		private void OkButton_Click( object _sender, EventArgs _e )
 		{
@@ -24,5 +32,7 @@ namespace Passkeeper.View.Forms
 		{
 			CancelButton_Clicked?.Invoke( _sender, _e );
 		}
+
+		//---------------------------------------------------------------------
 	}
 }

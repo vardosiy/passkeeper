@@ -7,6 +7,8 @@ namespace Passkeeper.Presenters
 {
 	public class EditAccountPresenter : IPresenter
 	{
+		//---------------------------------------------------------------------
+
 		readonly private IEditAccountForm m_form;
 		private Account m_selectedAccount;
 

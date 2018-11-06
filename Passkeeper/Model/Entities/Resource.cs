@@ -8,6 +8,8 @@ namespace Passkeeper.Model.Entities
 	[Serializable]
 	public class Resource : IComparable< Resource >
 	{
+		//---------------------------------------------------------------------
+
 		private BindingList< Account > m_accounts = new BindingList< Account >();
 
 		public string Name { get; private set; }
@@ -38,11 +40,6 @@ namespace Passkeeper.Model.Entities
 			m_accounts.Remove( _account );
 		}
 
-		public void BindTo( ListControl _listControl )
-		{
-			_listControl.DataSource = m_accounts;
-		}
-
 		//---------------------------------------------------------------------
 
 		// TODO
@@ -64,6 +61,11 @@ namespace Passkeeper.Model.Entities
 		}
 
 		//---------------------------------------------------------------------
+
+		public void BindTo( ListControl _listControl )
+		{
+			_listControl.DataSource = m_accounts;
+		}
 
 		public override string ToString()
 		{

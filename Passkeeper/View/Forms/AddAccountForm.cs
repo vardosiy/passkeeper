@@ -5,17 +5,25 @@ namespace Passkeeper.View.Forms
 {
 	public partial class AddAccountForm : Form, Interfaces.IAddAccountForm
 	{
+		//---------------------------------------------------------------------
+
 		public string Email => EmailTextBox.Text;
 		public string Login => LoginTextBox.Text;
 		public string Password => PasswordTextBox.Text;
 
+		//---------------------------------------------------------------------
+
 		public event EventHandler OKButton_Clicked;
 		public event EventHandler CancelButton_Clicked;
+
+		//---------------------------------------------------------------------
 
 		public AddAccountForm()
 		{
 			InitializeComponent();
 		}
+
+		//---------------------------------------------------------------------
 
 		private void OkButton_Click( object _sender, EventArgs _e )
 		{
@@ -26,5 +34,7 @@ namespace Passkeeper.View.Forms
 		{
 			CancelButton_Clicked?.Invoke( _sender, _e );
 		}
+
+		//---------------------------------------------------------------------
 	}
 }

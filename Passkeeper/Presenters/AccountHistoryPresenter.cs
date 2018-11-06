@@ -8,6 +8,8 @@ namespace Passkeeper.Presenters
 {
 	public class AccountHistoryPresenter : IPresenter
 	{
+		//---------------------------------------------------------------------
+
 		private readonly IAccountHistoryForm m_form;
 
 		//---------------------------------------------------------------------
@@ -38,17 +40,20 @@ namespace Passkeeper.Presenters
 		private string[] ConvertToStringArray( List< HistoryRecord > _convertable )
 		{
 			int linesRequiredForEachRecord = 5;
-			string[] result = new string[ _convertable.Capacity * linesRequiredForEachRecord ];
+			string[] result = new string[ _convertable.Count * linesRequiredForEachRecord ];
 
-			for ( int i = 0; i < _convertable.Capacity; i += linesRequiredForEachRecord )
+			int currentLineIndex = 0;
+			for ( int i = 0; i < _convertable.Count; ++i )
 			{
-				result[i] = "Change time: " + _convertable[i].ChangeTime.ToString();
+				result[currentLineIndex] = "Change time: " + _convertable[i].ChangeTime.ToString();
 
-				result[i + 1] = "Email: " + _convertable[i].Email;
-				result[i + 2] = "Email: " + _convertable[i].Login;
-				result[i + 3] = "Email: " + _convertable[i].Password;
+				result[currentLineIndex + 1] = "Email: " + _convertable[i].Email;
+				result[currentLineIndex + 2] = "Email: " + _convertable[i].Login;
+				result[currentLineIndex + 3] = "Email: " + _convertable[i].Password;
 
-				result[i + 4] = string.Empty;
+				result[currentLineIndex + 4] = string.Empty;
+
+				currentLineIndex += linesRequiredForEachRecord;
 			}
 
 			return result;

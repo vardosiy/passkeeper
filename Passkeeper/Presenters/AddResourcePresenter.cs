@@ -8,6 +8,8 @@ namespace Passkeeper.Presenters
 {
 	public class AddResourcePresenter : IPresenter
 	{
+		//---------------------------------------------------------------------
+
 		readonly private IAddResourceForm m_form;
 		private Controller m_controller;
 

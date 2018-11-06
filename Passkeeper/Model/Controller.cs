@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 
 using Passkeeper.Model.Entities;
@@ -9,32 +10,33 @@ namespace Passkeeper.Model
 {
 	public class Controller
 	{
-		private BindingList< Resource > m_resources = new BindingList< Resource >();
-		private SortedSet< Resource > m_register = new SortedSet< Resource >();
+		//---------------------------------------------------------------------
+
+		private BindingList< Resource > m_resources;
 
 		//---------------------------------------------------------------------
 
 		public Controller()
 		{
-			// LoadDAta;
+			LoadData();
 		}
 
 		public void LoadData()
 		{
-			throw new NotImplementedException();
+			m_resources	=	FileProcessor.RestoreResources( Path.Combine( "data", "1234567piu" ) )
+						??	new BindingList< Resource >();
 		}
 
 		//---------------------------------------------------------------------
 
 		public void AddResource( Resource _resource )
 		{
-			if ( m_register.Contains( _resource ) )
+			if ( m_resources.Contains( _resource ) )
 			{
 				Utils.MessageUtils.ShowError( "Resource with such name already exists" );
 				return;
 			}
-
-			m_register.Add( _resource );
+			
 			m_resources.Add( _resource );
 		}
 
@@ -51,9 +53,16 @@ namespace Passkeeper.Model
 			m_register.Remove( _resource );
 		}
 
+		//---------------------------------------------------------------------
+
 		public void BindTo( ListControl _listControl )
 		{
 			_listControl.DataSource = m_resources;
+		}
+
+		public void SaveToFile()
+		{
+			FileProcessor.SaveResources( m_resources, Path.Combine( "data", "1234567piu" ) );
 		}
 
 		//---------------------------------------------------------------------

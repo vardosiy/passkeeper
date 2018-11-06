@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\FileProcessor.cs" />
+    <Compile Include="Model\AesCrypter.cs" />
+    <Compile Include="Model\ProcessingFiles\FileProcessor.cs" />
     <Compile Include="Model\Entities\Resource.cs" />
     <Compile Include="Model\PasswordChecker.cs" />
     <Compile Include="Presenters\AccountHistoryPresenter.cs" />

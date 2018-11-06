@@ -1,26 +1,34 @@
-﻿using System;
+﻿using System.IO;
 
 namespace Passkeeper.Model
 {
 	public class PasswordChecker
 	{
-		private readonly string m_password;
+		//---------------------------------------------------------------------
+
+		private string m_password;
+
+		//---------------------------------------------------------------------
 
 		public PasswordChecker()
 		{
-			// LoadPassword();
-
-			m_password = "";
+			LoadPassword();
 		}
+
+		private void LoadPassword()
+		{
+			m_password = FileProcessor.LoadPassword(
+					Path.Combine( "data", "password".GetHashCode().ToString() )
+			);
+		}
+
+		//---------------------------------------------------------------------
 
 		public bool CheckPassword( string _password )
 		{
 			return m_password == _password;
 		}
 
-		private void LoadPassword()
-		{
-			throw new NotImplementedException();
-		}
+		//---------------------------------------------------------------------
 	}
 }

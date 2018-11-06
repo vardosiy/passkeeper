@@ -7,11 +7,15 @@ namespace Passkeeper.View.Forms
 {
 	public partial class ApplicationForm : Form, Interfaces.IApplicationForm
 	{
+		//---------------------------------------------------------------------
+
 		public object SelectedResource => ResourceList.SelectedItem;
 		public object SelectedAccount => ResourceAccountsComboBox.SelectedItem;
 		
 		public ListControl ResourcesList => ResourceList;
 		public ListControl AccountsList => ResourceAccountsComboBox;
+
+		//---------------------------------------------------------------------
 
 		public event EventHandler AddResourceButton_Clicked;
 		public event EventHandler RemoveResourceButton_Clicked;
@@ -24,10 +28,14 @@ namespace Passkeeper.View.Forms
 		public event EventHandler ShowAccountHistory_Clicked;
 		public event EventHandler DeleteAccountHistory_Clicked;
 
+		//---------------------------------------------------------------------
+
 		public ApplicationForm()
 		{
 			InitializeComponent();
 		}
+
+		//---------------------------------------------------------------------
 
 		private void AddResourceButton_Click( object _sender, EventArgs _e )
 		{
@@ -54,6 +62,8 @@ namespace Passkeeper.View.Forms
 			}
 		}
 
+		//---------------------------------------------------------------------
+
 		private void AddAccountButton_Click( object _sender, EventArgs _e )
 		{
 			if ( ResourceList.SelectedItem == null )
@@ -61,7 +71,8 @@ namespace Passkeeper.View.Forms
 
 			AddAccountButton_Clicked?.Invoke( _sender, _e );
 
-			ResourceAccountsComboBox_SelectedIndexChanged( _sender, _e );
+			if ( SelectedAccount != null )
+				ResourceAccountsComboBox_SelectedIndexChanged( _sender, _e );
 		}
 
 		private void EditAccountButton_Click( object _sender, EventArgs _e )
@@ -73,16 +84,6 @@ namespace Passkeeper.View.Forms
 
 			ResourceAccountsComboBox_SelectedIndexChanged( _sender, _e );
 			ResourceAccountsComboBox.Text = SelectedAccount.ToString();
-		}
-
-		private void ShowHistoryButton_Click( object _sender, EventArgs _e )
-		{
-			ShowAccountHistory_Clicked?.Invoke( _sender, _e );
-		}
-
-		private void ClearHistoryButton_Click( object _sender, EventArgs _e )
-		{
-			DeleteAccountHistory_Clicked?.Invoke( _sender, _e );
 		}
 
 		private void RemoveAccountButton_Click( object _sender, EventArgs _e )
@@ -102,11 +103,27 @@ namespace Passkeeper.View.Forms
 			PasswordTextBox.Text = selectedAccout.Password;
 		}
 
+		//---------------------------------------------------------------------
+
+		private void ShowHistoryButton_Click( object _sender, EventArgs _e )
+		{
+			ShowAccountHistory_Clicked?.Invoke( _sender, _e );
+		}
+
+		private void ClearHistoryButton_Click( object _sender, EventArgs _e )
+		{
+			DeleteAccountHistory_Clicked?.Invoke( _sender, _e );
+		}
+
+		//---------------------------------------------------------------------
+
 		public new DialogResult ShowDialog()
 		{
 			Application.Run( this );
 
 			return DialogResult.OK;
 		}
+
+		//---------------------------------------------------------------------
 	}
 }

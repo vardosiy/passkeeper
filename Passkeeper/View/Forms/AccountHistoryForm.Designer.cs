@@ -44,10 +44,9 @@
 			this.ContentTextBox.Multiline = true;
 			this.ContentTextBox.Name = "ContentTextBox";
 			this.ContentTextBox.ReadOnly = true;
-			this.ContentTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.ContentTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.ContentTextBox.Size = new System.Drawing.Size(576, 332);
-			this.ContentTextBox.TabIndex = 0;
-			this.ContentTextBox.WordWrap = false;
+			this.ContentTextBox.TabIndex = 1;
 			// 
 			// OKButton
 			// 
@@ -59,7 +58,7 @@
 			this.OKButton.Location = new System.Drawing.Point(486, 367);
 			this.OKButton.Name = "OKButton";
 			this.OKButton.Size = new System.Drawing.Size(103, 31);
-			this.OKButton.TabIndex = 1;
+			this.OKButton.TabIndex = 0;
 			this.OKButton.Text = "OK";
 			this.OKButton.UseVisualStyleBackColor = false;
 			this.OKButton.Click += new System.EventHandler(this.OKButton_Click);

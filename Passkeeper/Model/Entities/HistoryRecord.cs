@@ -5,6 +5,8 @@ namespace Passkeeper.Model.Entities
 	[Serializable]
 	public class HistoryRecord : Account
 	{
+		//---------------------------------------------------------------------
+
 		public DateTime ChangeTime { get; private set; }
 
 		//---------------------------------------------------------------------

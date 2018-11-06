@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 using Passkeeper.Model;
@@ -10,6 +11,8 @@ namespace Passkeeper.Presenters
 {
 	public class ApplicationPresenter : IPresenter
 	{
+		//---------------------------------------------------------------------
+
 		private Controller m_controller;
 		private IApplicationForm m_form;
 
@@ -55,6 +58,8 @@ namespace Passkeeper.Presenters
 			);
 
 			presenter.Run();
+			
+			m_controller.BindTo( m_form.ResourcesList );
 		}
 
 		//---------------------------------------------------------------------
@@ -145,15 +150,25 @@ namespace Passkeeper.Presenters
 
 		private void ShowAccountHistory_Clicked( object _sender, EventArgs _e )
 		{
-			Account selectedAccount = m_form.SelectedAccount as Account;
-			Resource selectedResource = m_form.SelectedResource as Resource;
+			//Account selectedAccount = m_form.SelectedAccount as Account;
+			//Resource selectedResource = m_form.SelectedResource as Resource;
 
-			AccountHistoryPresenter presenter = new AccountHistoryPresenter(
-					new AccountHistoryForm()
-				, selectedResource.GetAccountHistory( selectedAccount )
-			);
+			//List<HistoryRecord> list = new List<HistoryRecord>();
+			//list.Add( new HistoryRecord( "email0", "login0", "pass0", DateTime.Now ) );
+			//list.Add( new HistoryRecord( "email1", "login1", "pass1", DateTime.Now.AddHours( 1.0 ) ) );
+			//list.Add( new HistoryRecord( "email2", "login2", "pass2", DateTime.Now.AddHours( 2.0 ) ) );
+			//list.Add( new HistoryRecord( "email3", "login3", "pass3", DateTime.Now.AddHours( 3.0 ) ) );
+			//list.Add( new HistoryRecord( "email4", "login4", "pass4", DateTime.Now.AddHours( 4.0 ) ) );
+			//list.Add( new HistoryRecord( "email5", "login5", "pass5", DateTime.Now.AddHours( 5.0 ) ) );
 
-			presenter.Run();
+			//AccountHistoryPresenter presenter = new AccountHistoryPresenter(
+			//		new AccountHistoryForm()
+			//	,	list /*selectedResource.GetAccountHistory( selectedAccount )*/
+			//);
+
+			//presenter.Run();
+
+			m_controller.SaveToFile();
 		}
 
 		private void DeleteAccountHistory_Clicked( object _sender, EventArgs _e )

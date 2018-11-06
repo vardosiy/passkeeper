@@ -7,6 +7,8 @@ namespace Passkeeper.Presenters
 {
 	public class AddAccountPresetner : IPresenter
 	{
+		//---------------------------------------------------------------------
+
 		readonly private IAddAccountForm m_form;
 		private Resource m_selectedResource;
 
