@@ -4,12 +4,13 @@ using System.Linq;
 
 namespace Passkeeper.Model
 {
-	[Serializable]
-	public class UserManager : IStorable
+	public class UserManager : Storable
 	{
 		//---------------------------------------------------------------------
 
 		private Dictionary< string, string > m_users; // K - Username, V - Password
+
+		private bool m_modified = false;
 
 		public string CurrentUser { get; set; }
 
@@ -18,7 +19,12 @@ namespace Passkeeper.Model
 		public UserManager()
 		{
 			LoadData();
-			CurrentUser = null;
+		}
+
+		~UserManager()
+		{
+			if ( m_modified )
+				SaveToFile();
 		}
 
 		//---------------------------------------------------------------------
@@ -29,6 +35,7 @@ namespace Passkeeper.Model
 				throw new Exception( "User already exists" );
 
 			m_users.Add( _username, _password );
+			m_modified = true;
 		}
 
 		public bool IsUserExists( string _username )
@@ -43,14 +50,23 @@ namespace Passkeeper.Model
 
 		//---------------------------------------------------------------------
 
-		public void LoadData()
+		protected override void LoadData()
 		{
-			m_users = new Dictionary< string, string >();
+			object data = SaveRestore.FileProcessor.RestoreWithDeserialization(
+					SaveRestore.InternalNames.GetUserManagerSavePath()
+			);
+
+			m_users = data as Dictionary<string, string>
+				??	new Dictionary<string, string>()
+			;
 		}
 
-		public void SaveToFile()
+		protected override void SaveToFile()
 		{
-			//FileSystem.FileProcessor.SaveWithSerialization( this )
+			SaveRestore.FileProcessor.SaveWithSerialization(
+					m_users
+				,	SaveRestore.InternalNames.GetUserManagerSavePath()
+			);
 		}
 
 		//---------------------------------------------------------------------

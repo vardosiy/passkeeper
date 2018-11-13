@@ -17,17 +17,6 @@ namespace Passkeeper.Model.Entities
 			ChangeTime = _changeTime;
 		}
 
-		public HistoryRecord(
-				string _email
-			,	string _login
-			,	string _password
-			,	DateTime _changeTime
-		)
-			:	base( _email, _login, _password )
-		{
-			ChangeTime = _changeTime;
-		}
-
 		//---------------------------------------------------------------------
 	}
 }

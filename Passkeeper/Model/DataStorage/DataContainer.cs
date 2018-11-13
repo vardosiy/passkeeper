@@ -1,12 +1,13 @@
-﻿using System;
+﻿using System.IO;
 using System.ComponentModel;
 using System.Windows.Forms;
 
+using Passkeeper.Model.SaveRestore;
 using Passkeeper.Model.Entities;
 
 namespace Passkeeper.Model
 {
-	public class DataContainer : IStorable
+	public class DataContainer : Storable
 	{
 		//---------------------------------------------------------------------
 
@@ -17,6 +18,11 @@ namespace Passkeeper.Model
 		public DataContainer()
 		{
 			LoadData();
+		}
+
+		~DataContainer()
+		{
+			SaveToFile();
 		}
 
 		//---------------------------------------------------------------------
@@ -41,6 +47,7 @@ namespace Passkeeper.Model
 
 		public void RemoveResource( Resource _resource )
 		{
+			Directory.Delete( InternalNames.GetResourceSavePath( _resource ) );
 			m_data.Remove( _resource );
 		}
 
@@ -53,14 +60,23 @@ namespace Passkeeper.Model
 
 		//---------------------------------------------------------------------
 
-		public void LoadData()
+		protected override void LoadData()
 		{
-			m_data = new BindingList< Resource >();
+			object data = FileProcessor.RestoreWithDeserialization(
+					InternalNames.GetDataContainerSavePath()
+			);
+
+			m_data = data as BindingList< Resource >
+				??	new BindingList< Resource >()
+			;
 		}
 
-		public void SaveToFile()
+		protected override void SaveToFile()
 		{
-			throw new NotImplementedException();
+			FileProcessor.SaveWithSerialization(
+					m_data
+				,	InternalNames.GetDataContainerSavePath()
+			);
 		}
 
 		//---------------------------------------------------------------------

@@ -47,12 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\DataStorage\DataContainer.cs" />
-    <Compile Include="Model\DataStorage\InternalNames.cs" />
+    <Compile Include="Model\SaveRestore\InternalNames.cs" />
     <Compile Include="Model\SaveRestore\AesCrypter.cs" />
-    <Compile Include="Model\SaveRestore\FileManager.cs" />
     <Compile Include="Model\SaveRestore\FileProcessor.cs" />
     <Compile Include="Model\Entities\Resource.cs" />
-    <Compile Include="Model\DataStorage\IStorable.cs" />
+    <Compile Include="Model\DataStorage\Storable.cs" />
     <Compile Include="Model\DataStorage\UserManager.cs" />
     <Compile Include="Presenters\AccountHistoryPresenter.cs" />
     <Compile Include="Presenters\IPresenter.cs" />
@@ -67,12 +66,6 @@
     </Compile>
     <Compile Include="View\Forms\EditAccountForm.Designer.cs">
       <DependentUpon>EditAccountForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Forms\SettingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Forms\SettingsForm.Designer.cs">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Forms\SignInForm.cs">
       <SubType>Form</SubType>
@@ -92,7 +85,7 @@
     <Compile Include="Presenters\EditAccountPresenter.cs" />
     <Compile Include="Presenters\SignInPresenter.cs" />
     <Compile Include="Model\Entities\Account.cs" />
-    <Compile Include="Model\DataStorage\Model.cs" />
+    <Compile Include="Model\Model.cs" />
     <Compile Include="View\Forms\AddAccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,9 +123,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\EditAccountForm.resx">
       <DependentUpon>EditAccountForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Forms\SettingsForm.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\SignInForm.resx">
       <DependentUpon>SignInForm.cs</DependentUpon>

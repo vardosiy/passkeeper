@@ -7,7 +7,7 @@ namespace Passkeeper.Model.SaveRestore
 	{
 		//---------------------------------------------------------------------
 
-		internal static void SaveWithSerialization( object _object, string _path )
+		public static void SaveWithSerialization( object _object, string _path )
 		{
 			using ( MemoryStream memoryStream = new MemoryStream() )
 			{
@@ -28,7 +28,7 @@ namespace Passkeeper.Model.SaveRestore
 
 		//---------------------------------------------------------------------
 
-		internal static object RestoreWithDeserialization( string _path )
+		public static object RestoreWithDeserialization( string _path )
 		{
 			byte[] fileContent = ReadFromFile( _path );
 			if ( fileContent == null )

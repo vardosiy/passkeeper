@@ -10,7 +10,6 @@ namespace Passkeeper.Model.Entities
 		public string Email { get; set; }
 		public string Login { get; set; }
 		public string Password { get; set; }
-
 		public int InternalIndex { get; set; }
 
 		//---------------------------------------------------------------------
@@ -29,8 +28,7 @@ namespace Passkeeper.Model.Entities
 			Email = _account.Email;
 			Login = _account.Login;
 			Password = _account.Password;
-
-			InternalIndex = -1;
+			InternalIndex = _account.InternalIndex;
 		}
 
 		//---------------------------------------------------------------------

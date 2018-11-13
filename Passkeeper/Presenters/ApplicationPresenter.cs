@@ -55,6 +55,7 @@ namespace Passkeeper.Presenters
 			if ( m_model.UserManager.CurrentUser == null )
 				m_form.Close();
 
+			m_model.LoadData();
 			m_model.DataContainer.BindTo( m_form.ResourcesList );
 		}
 
@@ -120,14 +121,14 @@ namespace Passkeeper.Presenters
 
 			presenter.Run();
 
-			if (	selectedAccount.Email == nonchanged.Email
-				||	selectedAccount.Login == nonchanged.Login
-				||	selectedAccount.Password == nonchanged.Password
+			if (	selectedAccount.Email != nonchanged.Email
+				||	selectedAccount.Login != nonchanged.Login
+				||	selectedAccount.Password != nonchanged.Password
 			)
 			{
 				Resource selectedResource = m_form.SelectedResource as Resource;
 				selectedResource.AddAccountHistoryRecord(
-					new HistoryRecord( selectedAccount, DateTime.Now )
+					new HistoryRecord( nonchanged, DateTime.Now )
 				);
 			}
 		}
@@ -152,28 +153,18 @@ namespace Passkeeper.Presenters
 			Account selectedAccount = m_form.SelectedAccount as Account;
 			Resource selectedResource = m_form.SelectedResource as Resource;
 
-			List<HistoryRecord> list = new List<HistoryRecord>();
-			list.Add( new HistoryRecord( "email0", "login0", "pass0", DateTime.Now ) );
-			list.Add( new HistoryRecord( "email1", "login1", "pass1", DateTime.Now.AddHours( 1.0 ) ) );
-			list.Add( new HistoryRecord( "email2", "login2", "pass2", DateTime.Now.AddHours( 2.0 ) ) );
-			list.Add( new HistoryRecord( "email3", "login3", "pass3", DateTime.Now.AddHours( 3.0 ) ) );
-			list.Add( new HistoryRecord( "email4", "login4", "pass4", DateTime.Now.AddHours( 4.0 ) ) );
-			list.Add( new HistoryRecord( "email5", "login5", "pass5", DateTime.Now.AddHours( 5.0 ) ) );
-
 			AccountHistoryPresenter presenter = new AccountHistoryPresenter(
 					new AccountHistoryForm()
-				,	list /*selectedResource.GetAccountHistory( selectedAccount )*/
+				,	selectedResource.GetAccountHistory( selectedAccount )
 			);
 
 			presenter.Run();
-
-			//m_model.SaveToFile();
 		}
 
 		private void DeleteAccountHistory_Clicked( object _sender, EventArgs _e )
 		{
 			DialogResult result = Utils.MessageUtils.ShowWarning(
-				"Are you sure, you want to clear history for this account?"
+					"Are you sure, you want to clear history for this account?"
 			);
 
 			if ( result != DialogResult.OK )
@@ -182,7 +173,7 @@ namespace Passkeeper.Presenters
 			Account selectedAccount = m_form.SelectedAccount as Account;
 			Resource selectedResource = m_form.SelectedResource as Resource;
 
-			selectedResource.DeleteAccountHistory( selectedAccount );
+			selectedResource.RemoveAccountHistory( selectedAccount );
 		}
 
 		//---------------------------------------------------------------------

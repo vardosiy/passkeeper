@@ -28,22 +28,12 @@ namespace Passkeeper.Model
 			SaveRestore.InternalNames.CurrentUser = UserManager.CurrentUser;
 		}
 
-		public void SaveData()
-		{
-			DataContainer.SaveToFile();
-		}
-
 		public void LoadUserManager()
 		{
 			if ( UserManager != null )
 				throw new Exception( "UserManager was already loaded." );
 
 			UserManager = new UserManager();
-		}
-
-		public void SaveUserManager()
-		{
-			UserManager.SaveToFile();
 		}
 
 		//---------------------------------------------------------------------

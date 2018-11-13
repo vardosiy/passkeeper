@@ -1,7 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+
+using Passkeeper.Model.SaveRestore;
 
 namespace Passkeeper.Model.Entities
 {
@@ -44,24 +47,32 @@ namespace Passkeeper.Model.Entities
 
 		//---------------------------------------------------------------------
 
-		// TODO
 		public void AddAccountHistoryRecord( HistoryRecord _record )
 		{
-			return;
+			var currentHistory = GetAccountHistory( _record );
+			currentHistory.Add( _record );
+
+			FileProcessor.SaveWithSerialization( 
+					currentHistory
+				,	InternalNames.GetAccountSavePath( this, _record ) 
+			);
 		}
 
-		// TODO
-		public List<HistoryRecord> GetAccountHistory( Account _account )
+		public List< HistoryRecord > GetAccountHistory( Account _account )
 		{
-			SaveRestore.InternalNames.GetSavePathForAccount( this, _account );
+			object history = FileProcessor.RestoreWithDeserialization(
+					InternalNames.GetAccountSavePath( this, _account )
+			);
 
-			return null;
+			return	history != null
+				?	history as List< HistoryRecord >
+				:	new List< HistoryRecord >()
+			;
 		}
 
-		// TODO
-		public void DeleteAccountHistory( Account _account )
+		public void RemoveAccountHistory( Account _account )
 		{
-			return;
+			File.Delete( InternalNames.GetAccountSavePath( this, _account ) );
 		}
 
 		//---------------------------------------------------------------------

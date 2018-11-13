@@ -41,7 +41,7 @@ namespace Passkeeper.Presenters
 			)
 			{
 				Utils.MessageUtils.ShowWarning(
-					"You have cleared some field(s), changes will not be applied."
+						"You have cleared some field(s), changes will not be applied."
 				);
 
 				m_form.Close();
