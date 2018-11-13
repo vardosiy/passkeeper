@@ -29,5 +29,17 @@ namespace Passkeeper.Utils
 		}
 
 		//---------------------------------------------------------------------
+
+		static public DialogResult ShowMessage( string _message )
+		{
+			return MessageBox.Show(
+					_message
+				,	"Info"
+				,	MessageBoxButtons.OKCancel
+				,	MessageBoxIcon.Information
+			);
+		}
+
+		//---------------------------------------------------------------------
 	}
 }

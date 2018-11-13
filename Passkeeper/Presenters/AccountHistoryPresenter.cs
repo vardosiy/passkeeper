@@ -13,7 +13,7 @@ namespace Passkeeper.Presenters
 		private readonly IAccountHistoryForm m_form;
 
 		//---------------------------------------------------------------------
-
+		
 		public AccountHistoryPresenter( IAccountHistoryForm _form, List< HistoryRecord > _history )
 		{
 			m_form = _form;
@@ -39,21 +39,16 @@ namespace Passkeeper.Presenters
 
 		private string[] ConvertToStringArray( List< HistoryRecord > _convertable )
 		{
-			int linesRequiredForEachRecord = 5;
-			string[] result = new string[ _convertable.Count * linesRequiredForEachRecord ];
-
-			int currentLineIndex = 0;
+			int linesPerRecord = 5; // lines required for each record
+			string[] result = new string[ _convertable.Count * linesPerRecord];
+			
 			for ( int i = 0; i < _convertable.Count; ++i )
 			{
-				result[currentLineIndex] = "Change time: " + _convertable[i].ChangeTime.ToString();
-
-				result[currentLineIndex + 1] = "Email: " + _convertable[i].Email;
-				result[currentLineIndex + 2] = "Email: " + _convertable[i].Login;
-				result[currentLineIndex + 3] = "Email: " + _convertable[i].Password;
-
-				result[currentLineIndex + 4] = string.Empty;
-
-				currentLineIndex += linesRequiredForEachRecord;
+				result[i * linesPerRecord + 0] = "Change time: " + _convertable[i].ChangeTime.ToString();
+				result[i * linesPerRecord + 1] = "Email: " + _convertable[i].Email;
+				result[i * linesPerRecord + 2] = "Login: " + _convertable[i].Login;
+				result[i * linesPerRecord + 3] = "Password: " + _convertable[i].Password;
+				result[i * linesPerRecord + 4] = string.Empty;
 			}
 
 			return result;

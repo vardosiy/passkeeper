@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Security.Cryptography;
 
-namespace Passkeeper.Model
+namespace Passkeeper.Model.SaveRestore
 {
 	public class AesCrypter
 	{

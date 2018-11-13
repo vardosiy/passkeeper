@@ -11,17 +11,17 @@ namespace Passkeeper.Presenters
 		//---------------------------------------------------------------------
 
 		readonly private IAddResourceForm m_form;
-		private Controller m_controller;
+		private Model.Model m_model;
 
 		//---------------------------------------------------------------------
 
 		public AddResourcePresenter(
-				Controller _controller
+				Model.Model _model
 			,	IAddResourceForm _form
 		)
 		{
 			m_form = _form;
-			m_controller = _controller;
+			m_model = _model;
 
 			m_form.OKButton_Clicked += OKButton_Clicked;
 			m_form.CancelButton_Clicked += CancelButton_Clicked;
@@ -44,7 +44,7 @@ namespace Passkeeper.Presenters
 
 			Resource resource = new Resource( m_form.ResourceName );
 
-			m_controller.AddResource( resource );
+			m_model.DataContainer.AddResource( resource );
 			m_form.Close();
 		}
 

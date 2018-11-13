@@ -44,6 +44,7 @@
 			this.LoginTextBox = new System.Windows.Forms.TextBox();
 			this.PasswordTextBox = new System.Windows.Forms.TextBox();
 			this.RemoveAccountButton = new System.Windows.Forms.Button();
+			this.SettingsButton = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// AddResourceButton
@@ -57,7 +58,7 @@
 			this.AddResourceButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.AddResourceButton.Name = "AddResourceButton";
 			this.AddResourceButton.Size = new System.Drawing.Size(225, 35);
-			this.AddResourceButton.TabIndex = 0;
+			this.AddResourceButton.TabIndex = 1;
 			this.AddResourceButton.Text = "Add Resource";
 			this.AddResourceButton.UseVisualStyleBackColor = false;
 			this.AddResourceButton.Click += new System.EventHandler(this.AddResourceButton_Click);
@@ -72,7 +73,7 @@
 			this.RemoveResourceButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.RemoveResourceButton.Name = "RemoveResourceButton";
 			this.RemoveResourceButton.Size = new System.Drawing.Size(225, 35);
-			this.RemoveResourceButton.TabIndex = 1;
+			this.RemoveResourceButton.TabIndex = 2;
 			this.RemoveResourceButton.Text = "Remove Resource";
 			this.RemoveResourceButton.UseVisualStyleBackColor = false;
 			this.RemoveResourceButton.Click += new System.EventHandler(this.RemoveResourceButton_Click);
@@ -82,11 +83,11 @@
 			this.ClearHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.ClearHistoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.ClearHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.ClearHistoryButton.Location = new System.Drawing.Point(484, 277);
+			this.ClearHistoryButton.Location = new System.Drawing.Point(752, 263);
 			this.ClearHistoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ClearHistoryButton.Name = "ClearHistoryButton";
-			this.ClearHistoryButton.Size = new System.Drawing.Size(526, 35);
-			this.ClearHistoryButton.TabIndex = 2;
+			this.ClearHistoryButton.Size = new System.Drawing.Size(259, 35);
+			this.ClearHistoryButton.TabIndex = 10;
 			this.ClearHistoryButton.Text = "Clear History";
 			this.ClearHistoryButton.UseVisualStyleBackColor = false;
 			this.ClearHistoryButton.Click += new System.EventHandler(this.ClearHistoryButton_Click);
@@ -106,7 +107,7 @@
 			this.ResourceList.Name = "ResourceList";
 			this.ResourceList.Size = new System.Drawing.Size(456, 500);
 			this.ResourceList.Sorted = true;
-			this.ResourceList.TabIndex = 3;
+			this.ResourceList.TabIndex = 0;
 			this.ResourceList.SelectedIndexChanged += new System.EventHandler(this.ResourceList_SelectedIndexChanged);
 			// 
 			// ResourceAccountsComboBox
@@ -119,7 +120,7 @@
 			this.ResourceAccountsComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ResourceAccountsComboBox.Name = "ResourceAccountsComboBox";
 			this.ResourceAccountsComboBox.Size = new System.Drawing.Size(336, 28);
-			this.ResourceAccountsComboBox.TabIndex = 4;
+			this.ResourceAccountsComboBox.TabIndex = 11;
 			this.ResourceAccountsComboBox.SelectedIndexChanged += new System.EventHandler(this.ResourceAccountsComboBox_SelectedIndexChanged);
 			// 
 			// EmailLabel
@@ -157,12 +158,12 @@
 			this.EditAccountButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.EditAccountButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.EditAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.EditAccountButton.Location = new System.Drawing.Point(484, 187);
+			this.EditAccountButton.Location = new System.Drawing.Point(482, 218);
 			this.EditAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.EditAccountButton.Name = "EditAccountButton";
-			this.EditAccountButton.Size = new System.Drawing.Size(526, 35);
-			this.EditAccountButton.TabIndex = 8;
-			this.EditAccountButton.Text = "Edit";
+			this.EditAccountButton.Size = new System.Drawing.Size(260, 35);
+			this.EditAccountButton.TabIndex = 7;
+			this.EditAccountButton.Text = "Edit Account";
 			this.EditAccountButton.UseVisualStyleBackColor = false;
 			this.EditAccountButton.Click += new System.EventHandler(this.EditAccountButton_Click);
 			// 
@@ -171,12 +172,12 @@
 			this.ShowHistoryButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.ShowHistoryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.ShowHistoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.ShowHistoryButton.Location = new System.Drawing.Point(484, 232);
+			this.ShowHistoryButton.Location = new System.Drawing.Point(752, 218);
 			this.ShowHistoryButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.ShowHistoryButton.Name = "ShowHistoryButton";
-			this.ShowHistoryButton.Size = new System.Drawing.Size(526, 35);
+			this.ShowHistoryButton.Size = new System.Drawing.Size(259, 35);
 			this.ShowHistoryButton.TabIndex = 9;
-			this.ShowHistoryButton.Text = "Show History...";
+			this.ShowHistoryButton.Text = "Show History";
 			this.ShowHistoryButton.UseVisualStyleBackColor = false;
 			this.ShowHistoryButton.Click += new System.EventHandler(this.ShowHistoryButton_Click);
 			// 
@@ -189,7 +190,7 @@
 			this.AddAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.AddAccountButton.Name = "AddAccountButton";
 			this.AddAccountButton.Size = new System.Drawing.Size(180, 35);
-			this.AddAccountButton.TabIndex = 10;
+			this.AddAccountButton.TabIndex = 3;
 			this.AddAccountButton.Text = "Add Account";
 			this.AddAccountButton.UseVisualStyleBackColor = false;
 			this.AddAccountButton.Click += new System.EventHandler(this.AddAccountButton_Click);
@@ -202,8 +203,8 @@
 			this.EmailTextBox.Location = new System.Drawing.Point(603, 65);
 			this.EmailTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.EmailTextBox.Name = "EmailTextBox";
-			this.EmailTextBox.Size = new System.Drawing.Size(406, 26);
-			this.EmailTextBox.TabIndex = 11;
+			this.EmailTextBox.Size = new System.Drawing.Size(408, 26);
+			this.EmailTextBox.TabIndex = 4;
 			// 
 			// LoginTextBox
 			// 
@@ -213,8 +214,8 @@
 			this.LoginTextBox.Location = new System.Drawing.Point(603, 106);
 			this.LoginTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.LoginTextBox.Name = "LoginTextBox";
-			this.LoginTextBox.Size = new System.Drawing.Size(406, 26);
-			this.LoginTextBox.TabIndex = 12;
+			this.LoginTextBox.Size = new System.Drawing.Size(408, 26);
+			this.LoginTextBox.TabIndex = 5;
 			// 
 			// PasswordTextBox
 			// 
@@ -224,22 +225,35 @@
 			this.PasswordTextBox.Location = new System.Drawing.Point(603, 148);
 			this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.PasswordTextBox.Name = "PasswordTextBox";
-			this.PasswordTextBox.Size = new System.Drawing.Size(406, 26);
-			this.PasswordTextBox.TabIndex = 13;
+			this.PasswordTextBox.Size = new System.Drawing.Size(408, 26);
+			this.PasswordTextBox.TabIndex = 6;
 			// 
 			// RemoveAccountButton
 			// 
 			this.RemoveAccountButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.RemoveAccountButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
 			this.RemoveAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.RemoveAccountButton.Location = new System.Drawing.Point(484, 322);
+			this.RemoveAccountButton.Location = new System.Drawing.Point(482, 263);
 			this.RemoveAccountButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.RemoveAccountButton.Name = "RemoveAccountButton";
-			this.RemoveAccountButton.Size = new System.Drawing.Size(526, 35);
-			this.RemoveAccountButton.TabIndex = 14;
+			this.RemoveAccountButton.Size = new System.Drawing.Size(260, 35);
+			this.RemoveAccountButton.TabIndex = 8;
 			this.RemoveAccountButton.Text = "Remove Account";
 			this.RemoveAccountButton.UseVisualStyleBackColor = false;
 			this.RemoveAccountButton.Click += new System.EventHandler(this.RemoveAccountButton_Click);
+			// 
+			// SettingsButton
+			// 
+			this.SettingsButton.BackColor = System.Drawing.Color.Teal;
+			this.SettingsButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+			this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.SettingsButton.Location = new System.Drawing.Point(484, 522);
+			this.SettingsButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.SettingsButton.Name = "SettingsButton";
+			this.SettingsButton.Size = new System.Drawing.Size(527, 35);
+			this.SettingsButton.TabIndex = 12;
+			this.SettingsButton.Text = "Settings...";
+			this.SettingsButton.UseVisualStyleBackColor = false;
 			// 
 			// ApplicationForm
 			// 
@@ -247,6 +261,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(47)))));
 			this.ClientSize = new System.Drawing.Size(1023, 571);
+			this.Controls.Add(this.SettingsButton);
 			this.Controls.Add(this.RemoveAccountButton);
 			this.Controls.Add(this.PasswordTextBox);
 			this.Controls.Add(this.LoginTextBox);
@@ -291,6 +306,7 @@
 		private System.Windows.Forms.TextBox LoginTextBox;
 		private System.Windows.Forms.TextBox PasswordTextBox;
 		private System.Windows.Forms.Button RemoveAccountButton;
+		private System.Windows.Forms.Button SettingsButton;
 	}
 }
 

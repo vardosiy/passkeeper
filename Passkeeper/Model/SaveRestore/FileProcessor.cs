@@ -1,35 +1,24 @@
 ﻿using System.IO;
-using System.Text;
-using System.ComponentModel;
 using System.Runtime.Serialization.Formatters.Binary;
 
-using Passkeeper.Model.Entities;
-
-namespace Passkeeper.Model
+namespace Passkeeper.Model.SaveRestore
 {
 	public static class FileProcessor
 	{
 		//---------------------------------------------------------------------
 
-		public static void SaveResources( BindingList< Resource > _resources, string _path )
+		internal static void SaveWithSerialization( object _object, string _path )
 		{
 			using ( MemoryStream memoryStream = new MemoryStream() )
 			{
 				BinaryFormatter binaryFormatter = new BinaryFormatter();
-				binaryFormatter.Serialize( memoryStream, _resources );
+				binaryFormatter.Serialize( memoryStream, _object );
 
 				SaveToFile( _path, AesCrypter.Encrypt( memoryStream.ToArray() ) );
 			}
 		}
 
-		public static void SavePassword( string _password, string _path )
-		{
-			byte[] str = Encoding.ASCII.GetBytes( _path );
-
-			SaveToFile( _path, AesCrypter.Encrypt( str ) );
-		}
-
-		public static void SaveToFile( string _path, byte[] _data )
+		private static void SaveToFile( string _path, byte[] _data )
 		{
 			Directory.CreateDirectory( Path.GetDirectoryName( _path ) );
 
@@ -39,7 +28,7 @@ namespace Passkeeper.Model
 
 		//---------------------------------------------------------------------
 
-		public static BindingList< Resource > RestoreResources( string _path )
+		internal static object RestoreWithDeserialization( string _path )
 		{
 			byte[] fileContent = ReadFromFile( _path );
 			if ( fileContent == null )
@@ -50,24 +39,12 @@ namespace Passkeeper.Model
 			MemoryStream memoryStream = new MemoryStream( decrypted );
 			BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-			object deserealized = binaryFormatter.Deserialize( memoryStream );
-			return deserealized as BindingList< Resource >;
+			return binaryFormatter.Deserialize( memoryStream );
 		}
 
-		public static string LoadPassword( string _path )
+		private static byte[] ReadFromFile( string _path )
 		{
-			byte[] fileContent = ReadFromFile( _path );
-			if ( fileContent == null )
-				return null;
-
-			byte[] decrypted = AesCrypter.Decrypt( fileContent );
-
-			return Encoding.ASCII.GetString( decrypted );
-		}
-
-		public static byte[] ReadFromFile( string _path )
-		{
-			if ( !Directory.Exists( Path.GetDirectoryName( _path ) ) )
+			if ( !File.Exists( _path ) )
 				return null;
 
 			using ( FileStream stream = new FileStream( _path, FileMode.Open ) )

@@ -16,7 +16,7 @@ namespace Passkeeper
 
 			Presenters.ApplicationPresenter presenter = new Presenters.ApplicationPresenter(
 					new View.Forms.ApplicationForm()
-				,	new Model.Controller()
+				,	new Model.Model()
 			);
 
 			presenter.Run();

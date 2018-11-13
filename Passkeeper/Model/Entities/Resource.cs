@@ -11,6 +11,7 @@ namespace Passkeeper.Model.Entities
 		//---------------------------------------------------------------------
 
 		private BindingList< Account > m_accounts = new BindingList< Account >();
+		private int m_currentAccountInternalIndex = -1;
 
 		public string Name { get; private set; }
 
@@ -25,6 +26,7 @@ namespace Passkeeper.Model.Entities
 
 		public void AddAccount( Account _account )
 		{
+			_account.InternalIndex = ++m_currentAccountInternalIndex;
 			m_accounts.Add( _account );
 		}
 
@@ -49,8 +51,10 @@ namespace Passkeeper.Model.Entities
 		}
 
 		// TODO
-		public List< HistoryRecord > GetAccountHistory( Account _account )
+		public List<HistoryRecord> GetAccountHistory( Account _account )
 		{
+			SaveRestore.InternalNames.GetSavePathForAccount( this, _account );
+
 			return null;
 		}
 
@@ -67,14 +71,14 @@ namespace Passkeeper.Model.Entities
 			_listControl.DataSource = m_accounts;
 		}
 
-		public override string ToString()
-		{
-			return Name;
-		}
-
 		public int CompareTo( Resource _other )
 		{
 			return string.Compare( Name, _other.Name );
+		}
+
+		public override string ToString()
+		{
+			return Name;
 		}
 
 		//---------------------------------------------------------------------

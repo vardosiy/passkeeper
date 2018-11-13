@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-using Passkeeper.Model;
 using Passkeeper.Model.Entities;
 using Passkeeper.View.Forms;
 using Passkeeper.View.Interfaces;
@@ -13,15 +12,15 @@ namespace Passkeeper.Presenters
 	{
 		//---------------------------------------------------------------------
 
-		private Controller m_controller;
 		private IApplicationForm m_form;
+		private Model.Model m_model;
 
 		//---------------------------------------------------------------------
 
-		public ApplicationPresenter( IApplicationForm _form, Controller _controller )
+		public ApplicationPresenter( IApplicationForm _form, Model.Model _model )
 		{
-			m_controller = _controller;
 			m_form = _form;
+			m_model = _model;
 
 			m_form.Load += Form_Load;
 
@@ -46,30 +45,27 @@ namespace Passkeeper.Presenters
 
 		private void Form_Load( object _sender, EventArgs _e )
 		{
-			LoginPresenter presenter = new LoginPresenter(
-					new LoginForm()
-				,	( _presenter ) =>
-					{
-						if ( !_presenter.LogedIn )
-							m_form.Close();
-
-						return true;
-					}
+			SignInPresenter presenter = new SignInPresenter(
+					new SignInForm()
+				,	m_model.UserManager
 			);
 
 			presenter.Run();
-			
-			m_controller.BindTo( m_form.ResourcesList );
+
+			if ( m_model.UserManager.CurrentUser == null )
+				m_form.Close();
+
+			m_model.DataContainer.BindTo( m_form.ResourcesList );
 		}
 
 		//---------------------------------------------------------------------
 
 		private void AddResourceButton_Clicked( object _sender, EventArgs _e )
 		{
-			AddResourcePresenter presetner = new AddResourcePresenter( m_controller, new AddResourceForm() );
+			AddResourcePresenter presetner = new AddResourcePresenter( m_model, new AddResourceForm() );
 			presetner.Run();
 
-			m_controller.BindTo( m_form.ResourcesList );
+			m_model.DataContainer.BindTo( m_form.ResourcesList );
 		}
 
 		private void RemoveResourceButton_Clicked( object _sender, EventArgs _e )
@@ -81,7 +77,7 @@ namespace Passkeeper.Presenters
 			if ( result != DialogResult.OK )
 				return;
 
-			m_controller.RemoveResource( m_form.SelectedResource as Resource );
+			m_model.DataContainer.RemoveResource( m_form.SelectedResource as Resource );
 		}
 
 		private void SelectedResourceChanged( object _sender, EventArgs _e )
@@ -113,24 +109,27 @@ namespace Passkeeper.Presenters
 		private void EditAccountButton_Clicked( object _sender, EventArgs _e )
 		{
 			Account selectedAccount = m_form.SelectedAccount as Account;
+			Account nonchanged = new Account( selectedAccount );
 			EditAccountForm form = new EditAccountForm(
 					selectedAccount.Email
 				,	selectedAccount.Login
 				,	selectedAccount.Password
 			);
+
 			EditAccountPresenter presenter = new EditAccountPresenter( selectedAccount, form );
 
 			presenter.Run();
 
-			if ( object.ReferenceEquals( presenter.Result, selectedAccount ) )
-				return;
-
-			Resource selectedResource = m_form.SelectedResource as Resource;
-
-			selectedResource.RemoveAccount( selectedAccount );
-			selectedResource.AddAccount( presenter.Result );
-
-			selectedResource.AddAccountHistoryRecord( new HistoryRecord( selectedAccount, DateTime.Now ) );
+			if (	selectedAccount.Email == nonchanged.Email
+				||	selectedAccount.Login == nonchanged.Login
+				||	selectedAccount.Password == nonchanged.Password
+			)
+			{
+				Resource selectedResource = m_form.SelectedResource as Resource;
+				selectedResource.AddAccountHistoryRecord(
+					new HistoryRecord( selectedAccount, DateTime.Now )
+				);
+			}
 		}
 
 		private void RemoveAccount_Clicked( object _sender, EventArgs _e )
@@ -150,25 +149,25 @@ namespace Passkeeper.Presenters
 
 		private void ShowAccountHistory_Clicked( object _sender, EventArgs _e )
 		{
-			//Account selectedAccount = m_form.SelectedAccount as Account;
-			//Resource selectedResource = m_form.SelectedResource as Resource;
+			Account selectedAccount = m_form.SelectedAccount as Account;
+			Resource selectedResource = m_form.SelectedResource as Resource;
 
-			//List<HistoryRecord> list = new List<HistoryRecord>();
-			//list.Add( new HistoryRecord( "email0", "login0", "pass0", DateTime.Now ) );
-			//list.Add( new HistoryRecord( "email1", "login1", "pass1", DateTime.Now.AddHours( 1.0 ) ) );
-			//list.Add( new HistoryRecord( "email2", "login2", "pass2", DateTime.Now.AddHours( 2.0 ) ) );
-			//list.Add( new HistoryRecord( "email3", "login3", "pass3", DateTime.Now.AddHours( 3.0 ) ) );
-			//list.Add( new HistoryRecord( "email4", "login4", "pass4", DateTime.Now.AddHours( 4.0 ) ) );
-			//list.Add( new HistoryRecord( "email5", "login5", "pass5", DateTime.Now.AddHours( 5.0 ) ) );
+			List<HistoryRecord> list = new List<HistoryRecord>();
+			list.Add( new HistoryRecord( "email0", "login0", "pass0", DateTime.Now ) );
+			list.Add( new HistoryRecord( "email1", "login1", "pass1", DateTime.Now.AddHours( 1.0 ) ) );
+			list.Add( new HistoryRecord( "email2", "login2", "pass2", DateTime.Now.AddHours( 2.0 ) ) );
+			list.Add( new HistoryRecord( "email3", "login3", "pass3", DateTime.Now.AddHours( 3.0 ) ) );
+			list.Add( new HistoryRecord( "email4", "login4", "pass4", DateTime.Now.AddHours( 4.0 ) ) );
+			list.Add( new HistoryRecord( "email5", "login5", "pass5", DateTime.Now.AddHours( 5.0 ) ) );
 
-			//AccountHistoryPresenter presenter = new AccountHistoryPresenter(
-			//		new AccountHistoryForm()
-			//	,	list /*selectedResource.GetAccountHistory( selectedAccount )*/
-			//);
+			AccountHistoryPresenter presenter = new AccountHistoryPresenter(
+					new AccountHistoryForm()
+				,	list /*selectedResource.GetAccountHistory( selectedAccount )*/
+			);
 
-			//presenter.Run();
+			presenter.Run();
 
-			m_controller.SaveToFile();
+			//m_model.SaveToFile();
 		}
 
 		private void DeleteAccountHistory_Clicked( object _sender, EventArgs _e )

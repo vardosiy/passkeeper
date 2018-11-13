@@ -46,10 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\AesCrypter.cs" />
-    <Compile Include="Model\ProcessingFiles\FileProcessor.cs" />
+    <Compile Include="Model\DataStorage\DataContainer.cs" />
+    <Compile Include="Model\DataStorage\InternalNames.cs" />
+    <Compile Include="Model\SaveRestore\AesCrypter.cs" />
+    <Compile Include="Model\SaveRestore\FileManager.cs" />
+    <Compile Include="Model\SaveRestore\FileProcessor.cs" />
     <Compile Include="Model\Entities\Resource.cs" />
-    <Compile Include="Model\PasswordChecker.cs" />
+    <Compile Include="Model\DataStorage\IStorable.cs" />
+    <Compile Include="Model\DataStorage\UserManager.cs" />
     <Compile Include="Presenters\AccountHistoryPresenter.cs" />
     <Compile Include="Presenters\IPresenter.cs" />
     <Compile Include="View\Forms\AccountHistoryForm.cs">
@@ -64,26 +68,31 @@
     <Compile Include="View\Forms\EditAccountForm.Designer.cs">
       <DependentUpon>EditAccountForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Forms\LoginForm.cs">
+    <Compile Include="View\Forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Forms\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="View\Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Forms\SignInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\SignInForm.Designer.cs">
+      <DependentUpon>SignInForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Interfaces\IAccountHistoryForm.cs" />
     <Compile Include="View\Interfaces\IAddAccountForm.cs" />
     <Compile Include="View\Interfaces\IAddResourceForm.cs" />
     <Compile Include="View\Interfaces\IApplicationForm.cs" />
     <Compile Include="View\Interfaces\IEditAccountForm.cs" />
-    <Compile Include="View\Interfaces\ILoginForm.cs" />
+    <Compile Include="View\Interfaces\ISignInForm.cs" />
     <Compile Include="Presenters\AddAccountPresetner.cs" />
     <Compile Include="Presenters\AddResourcePresenter.cs" />
     <Compile Include="Presenters\ApplicationPresenter.cs" />
     <Compile Include="Presenters\EditAccountPresenter.cs" />
-    <Compile Include="Presenters\LoginPresenter.cs" />
+    <Compile Include="Presenters\SignInPresenter.cs" />
     <Compile Include="Model\Entities\Account.cs" />
-    <Compile Include="Model\Controller.cs" />
-    <Compile Include="Model\UserManager.cs" />
+    <Compile Include="Model\DataStorage\Model.cs" />
     <Compile Include="View\Forms\AddAccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,8 +131,11 @@
     <EmbeddedResource Include="View\Forms\EditAccountForm.resx">
       <DependentUpon>EditAccountForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Forms\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\SignInForm.resx">
+      <DependentUpon>SignInForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
