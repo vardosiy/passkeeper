@@ -14,6 +14,7 @@ namespace Passkeeper.Model.Entities
 		//---------------------------------------------------------------------
 
 		private BindingList< Account > m_accounts = new BindingList< Account >();
+
 		private int m_currentAccountInternalIndex = -1;
 
 		public string Name { get; private set; }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 using Passkeeper.Model.Entities;
@@ -31,6 +30,7 @@ namespace Passkeeper.Presenters
 			m_form.AddResourceButton_Clicked += AddResourceButton_Clicked;
 			m_form.EditAccountButton_Clicked += EditAccountButton_Clicked;
 			m_form.RemoveAccount_Clicked += RemoveAccount_Clicked;
+			m_form.SelectedAccountChanged += SelectedAccountChanged;
 
 			m_form.ShowAccountHistory_Clicked += ShowAccountHistory_Clicked;
 			m_form.DeleteAccountHistory_Clicked += DeleteAccountHistory_Clicked;
@@ -136,7 +136,7 @@ namespace Passkeeper.Presenters
 		private void RemoveAccount_Clicked( object _sender, EventArgs _e )
 		{
 			DialogResult result = Utils.MessageUtils.ShowWarning(
-				"Are you sure, you want to remove data about all accounts asociated with this resource?"
+				"Are you sure, you want to remove this accounts and it's history?"
 			);
 
 			if ( result != DialogResult.OK )
@@ -144,6 +144,24 @@ namespace Passkeeper.Presenters
 
 			Resource selectedResource = m_form.SelectedResource as Resource;
 			selectedResource.RemoveAccount( m_form.SelectedAccount as Account );
+
+			m_form.AccountsList.SelectedIndex = selectedResource.AccountsCount != 0 ? 0 : -1;
+		}
+
+		private void SelectedAccountChanged( object _sender, EventArgs _e )
+		{
+			if ( m_form.SelectedAccount is Account selectedAccount )
+			{
+				m_form.CurrentAccountEmail = selectedAccount.Email;
+				m_form.CurrentAccountLogin = selectedAccount.Login;
+				m_form.CurrentAccountPassword = selectedAccount.Password;
+			}
+			else
+			{
+				m_form.CurrentAccountEmail = string.Empty;
+				m_form.CurrentAccountLogin = string.Empty;
+				m_form.CurrentAccountPassword = string.Empty;
+			}
 		}
 
 		//---------------------------------------------------------------------

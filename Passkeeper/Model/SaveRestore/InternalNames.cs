@@ -25,6 +25,7 @@ namespace Passkeeper.Model.SaveRestore
 		{
 			return Path.Combine(
 					DefaultSaveDirectory
+				,	CurrentUser.GetHashCode().ToString()
 				,	"data_container".GetHashCode().ToString()
 			);
 		}

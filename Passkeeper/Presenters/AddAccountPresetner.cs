@@ -9,7 +9,7 @@ namespace Passkeeper.Presenters
 	{
 		//---------------------------------------------------------------------
 
-		readonly private IAddAccountForm m_form;
+		private IAddAccountForm m_form;
 		private Resource m_selectedResource;
 
 		//---------------------------------------------------------------------

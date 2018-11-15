@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 using Passkeeper.Model;
 using Passkeeper.View.Interfaces;
@@ -62,13 +63,13 @@ namespace Passkeeper.Presenters
 			switch ( m_workMode )
 			{
 				case WorkMode.SignIn:
-					m_form.ChangeModeButtonText = "Create User";
+					(_sender as Button).Text = "Create User";
 					m_form.ConfirmTextBoxVisible = false;
 					m_form.ConfirmLabelVisible = false;
 					break;
 
 				case WorkMode.Create:
-					m_form.ChangeModeButtonText = "Sign In";
+					( _sender as Button ).Text = "Sign In";
 					m_form.ConfirmTextBoxVisible = true;
 					m_form.ConfirmLabelVisible = true;
 					break;

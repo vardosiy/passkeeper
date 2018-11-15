@@ -47,7 +47,11 @@ namespace Passkeeper.Model
 
 		public void RemoveResource( Resource _resource )
 		{
-			Directory.Delete( InternalNames.GetResourceSavePath( _resource ) );
+			string savePath = InternalNames.GetResourceSavePath( _resource );
+
+			if ( Directory.Exists( savePath ) )
+				Directory.Delete( savePath );
+
 			m_data.Remove( _resource );
 		}
 

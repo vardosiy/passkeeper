@@ -15,6 +15,22 @@ namespace Passkeeper.View.Forms
 		public ListControl ResourcesList => ResourceList;
 		public ListControl AccountsList => ResourceAccountsComboBox;
 
+		public string CurrentAccountEmail
+		{
+			get => EmailTextBox.Text;
+			set => EmailTextBox.Text = value;
+		}
+		public string CurrentAccountLogin
+		{
+			get => LoginTextBox.Text;
+			set => LoginTextBox.Text = value;
+		}
+		public string CurrentAccountPassword
+		{
+			get => PasswordTextBox.Text;
+			set => PasswordTextBox.Text = value;
+		}
+
 		//---------------------------------------------------------------------
 
 		public event EventHandler AddResourceButton_Clicked;
@@ -24,6 +40,7 @@ namespace Passkeeper.View.Forms
 		public event EventHandler AddAccountButton_Clicked;
 		public event EventHandler EditAccountButton_Clicked;
 		public event EventHandler RemoveAccount_Clicked;
+		public event EventHandler SelectedAccountChanged;
 
 		public event EventHandler ShowAccountHistory_Clicked;
 		public event EventHandler DeleteAccountHistory_Clicked;
@@ -96,11 +113,7 @@ namespace Passkeeper.View.Forms
 
 		private void ResourceAccountsComboBox_SelectedIndexChanged( object _sender, EventArgs _e )
 		{
-			Account selectedAccout = ResourceAccountsComboBox.SelectedItem as Account;
-
-			EmailTextBox.Text = selectedAccout.Email;
-			LoginTextBox.Text = selectedAccout.Login;
-			PasswordTextBox.Text = selectedAccout.Password;
+			SelectedAccountChanged?.Invoke( _sender, _e );
 		}
 
 		//---------------------------------------------------------------------

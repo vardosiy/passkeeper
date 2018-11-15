@@ -10,7 +10,7 @@ namespace Passkeeper.Presenters
 	{
 		//---------------------------------------------------------------------
 
-		readonly private IAddResourceForm m_form;
+		private IAddResourceForm m_form;
 		private Model.Model m_model;
 
 		//---------------------------------------------------------------------

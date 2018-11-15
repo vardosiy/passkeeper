@@ -13,11 +13,6 @@ namespace Passkeeper.View.Forms
 
 		//---------------------------------------------------------------------
 
-		public string ChangeModeButtonText
-		{
-			get => CreateUserButton.Text;
-			set => CreateUserButton.Text = value;
-		}
 		public bool ConfirmTextBoxVisible
 		{
 			get => ConfirmTextBox.Visible;

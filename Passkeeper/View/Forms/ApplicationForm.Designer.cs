@@ -203,6 +203,7 @@
 			this.EmailTextBox.Location = new System.Drawing.Point(603, 65);
 			this.EmailTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.EmailTextBox.Name = "EmailTextBox";
+			this.EmailTextBox.ReadOnly = true;
 			this.EmailTextBox.Size = new System.Drawing.Size(408, 26);
 			this.EmailTextBox.TabIndex = 4;
 			// 
@@ -214,6 +215,7 @@
 			this.LoginTextBox.Location = new System.Drawing.Point(603, 106);
 			this.LoginTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.LoginTextBox.Name = "LoginTextBox";
+			this.LoginTextBox.ReadOnly = true;
 			this.LoginTextBox.Size = new System.Drawing.Size(408, 26);
 			this.LoginTextBox.TabIndex = 5;
 			// 
@@ -225,6 +227,7 @@
 			this.PasswordTextBox.Location = new System.Drawing.Point(603, 148);
 			this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.PasswordTextBox.Name = "PasswordTextBox";
+			this.PasswordTextBox.ReadOnly = true;
 			this.PasswordTextBox.Size = new System.Drawing.Size(408, 26);
 			this.PasswordTextBox.TabIndex = 6;
 			// 
@@ -254,6 +257,7 @@
 			this.SettingsButton.TabIndex = 12;
 			this.SettingsButton.Text = "Settings...";
 			this.SettingsButton.UseVisualStyleBackColor = false;
+			this.SettingsButton.Visible = false;
 			// 
 			// ApplicationForm
 			// 

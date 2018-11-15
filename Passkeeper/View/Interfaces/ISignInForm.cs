@@ -8,7 +8,6 @@ namespace Passkeeper.View.Interfaces
 		string Password { get; }
 		string Confirmation { get; }
 
-		string ChangeModeButtonText { get; set; }
 		bool ConfirmTextBoxVisible { get; set; }
 		bool ConfirmLabelVisible { get; set; }
 

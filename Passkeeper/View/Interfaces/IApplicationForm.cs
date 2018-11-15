@@ -11,6 +11,10 @@ namespace Passkeeper.View.Interfaces
 		ListControl ResourcesList { get; }
 		ListControl AccountsList { get; }
 
+		string CurrentAccountEmail { get; set; }
+		string CurrentAccountLogin { get; set; }
+		string CurrentAccountPassword { get; set; }
+
 		event EventHandler Load;
 
 		event EventHandler AddResourceButton_Clicked;
@@ -20,6 +24,7 @@ namespace Passkeeper.View.Interfaces
 		event EventHandler AddAccountButton_Clicked;
 		event EventHandler EditAccountButton_Clicked;
 		event EventHandler RemoveAccount_Clicked;
+		event EventHandler SelectedAccountChanged;
 
 		event EventHandler ShowAccountHistory_Clicked;
 		event EventHandler DeleteAccountHistory_Clicked;
