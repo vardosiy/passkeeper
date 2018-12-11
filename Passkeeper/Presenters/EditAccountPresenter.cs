@@ -9,8 +9,8 @@ namespace Passkeeper.Presenters
 	{
 		//---------------------------------------------------------------------
 
-		private IEditAccountForm m_form;
-		private Account m_selectedAccount;
+		readonly IEditAccountForm m_form;
+		Account m_selectedAccount;
 
 		//---------------------------------------------------------------------
 
@@ -54,7 +54,6 @@ namespace Passkeeper.Presenters
 
 			m_form.Close();
 		}
-
 		private void CancelButton_Clicked( object _sender, EventArgs _e )
 		{
 			m_form.Close();

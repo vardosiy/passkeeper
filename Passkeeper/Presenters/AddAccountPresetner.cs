@@ -9,8 +9,8 @@ namespace Passkeeper.Presenters
 	{
 		//---------------------------------------------------------------------
 
-		private IAddAccountForm m_form;
-		private Resource m_selectedResource;
+		readonly IAddAccountForm m_form;
+		Resource m_selectedResource;
 
 		//---------------------------------------------------------------------
 
@@ -48,7 +48,6 @@ namespace Passkeeper.Presenters
 
 			m_form.Close();
 		}
-
 		private void CancelButton_Clicked( object _sender, EventArgs _e )
 		{
 			m_form.Close();

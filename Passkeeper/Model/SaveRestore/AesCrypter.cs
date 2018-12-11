@@ -7,8 +7,8 @@ namespace Passkeeper.Model.SaveRestore
 	{
 		//---------------------------------------------------------------------
 
-		private const string IV = "qo1lc3sjd8zpt9cx"; // 128 bytes
-		private const string Key = "ow7dxys8glfor9tnc2ansdfo1etkfjcv"; // 256 bytes
+		const string IV = "qo1lc3sjd8zpt9cx"; // 128 bytes
+		const string Key = "ow7dxys8glfor9tnc2ansdfo1etkfjcv"; // 256 bytes
 
 		//---------------------------------------------------------------------
 
@@ -22,7 +22,6 @@ namespace Passkeeper.Model.SaveRestore
 
 			return ecrypted;
 		}
-
 		public static byte[] Decrypt( byte[] _data )
 		{
 			var cryptoProvider = EnsureCryptoProvider();

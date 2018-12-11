@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using Passkeeper.Model.Entities;
-
 namespace Passkeeper.View.Forms
 {
 	public partial class ApplicationForm : Form, Interfaces.IApplicationForm
@@ -44,6 +42,7 @@ namespace Passkeeper.View.Forms
 
 		public event EventHandler ShowAccountHistory_Clicked;
 		public event EventHandler DeleteAccountHistory_Clicked;
+		public event EventHandler SettingsButton_Clicked;
 
 		//---------------------------------------------------------------------
 
@@ -58,7 +57,6 @@ namespace Passkeeper.View.Forms
 		{
 			AddResourceButton_Clicked?.Invoke( _sender, _e );
 		}
-
 		private void RemoveResourceButton_Click( object _sender, EventArgs _e )
 		{
 			if ( ResourceList.SelectedItem == null )
@@ -91,7 +89,6 @@ namespace Passkeeper.View.Forms
 			if ( SelectedAccount != null )
 				ResourceAccountsComboBox_SelectedIndexChanged( _sender, _e );
 		}
-
 		private void EditAccountButton_Click( object _sender, EventArgs _e )
 		{
 			if ( SelectedResource == null || SelectedAccount == null )
@@ -102,7 +99,6 @@ namespace Passkeeper.View.Forms
 			ResourceAccountsComboBox_SelectedIndexChanged( _sender, _e );
 			ResourceAccountsComboBox.Text = SelectedAccount.ToString();
 		}
-
 		private void RemoveAccountButton_Click( object _sender, EventArgs _e )
 		{
 			if ( SelectedResource == null || SelectedAccount == null )
@@ -122,10 +118,13 @@ namespace Passkeeper.View.Forms
 		{
 			ShowAccountHistory_Clicked?.Invoke( _sender, _e );
 		}
-
 		private void ClearHistoryButton_Click( object _sender, EventArgs _e )
 		{
 			DeleteAccountHistory_Clicked?.Invoke( _sender, _e );
+		}
+		private void SettingsButton_Click( object _sender, EventArgs _e )
+		{
+			SettingsButton_Clicked?.Invoke( _sender, _e );
 		}
 
 		//---------------------------------------------------------------------

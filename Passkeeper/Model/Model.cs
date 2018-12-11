@@ -26,7 +26,6 @@ namespace Passkeeper.Model
 			SaveRestore.InternalNames.CurrentUser = UserManager.CurrentUser;
 			DataContainer = new DataContainer();
 		}
-
 		public void LoadUserManager()
 		{
 			if ( UserManager != null )

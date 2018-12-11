@@ -28,5 +28,6 @@ namespace Passkeeper.View.Interfaces
 
 		event EventHandler ShowAccountHistory_Clicked;
 		event EventHandler DeleteAccountHistory_Clicked;
+		event EventHandler SettingsButton_Clicked;
 	}
 }

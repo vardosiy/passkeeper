@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,6 +58,7 @@
     <Compile Include="Model\DataStorage\UserManager.cs" />
     <Compile Include="Presenters\AccountHistoryPresenter.cs" />
     <Compile Include="Presenters\IPresenter.cs" />
+    <Compile Include="Presenters\SettingsPresenter.cs" />
     <Compile Include="View\Forms\AccountHistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +71,12 @@
     <Compile Include="View\Forms\EditAccountForm.Designer.cs">
       <DependentUpon>EditAccountForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Forms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Forms\SignInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +88,7 @@
     <Compile Include="View\Interfaces\IAddResourceForm.cs" />
     <Compile Include="View\Interfaces\IApplicationForm.cs" />
     <Compile Include="View\Interfaces\IEditAccountForm.cs" />
+    <Compile Include="View\Interfaces\ISettingsForm.cs" />
     <Compile Include="View\Interfaces\ISignInForm.cs" />
     <Compile Include="Presenters\AddAccountPresetner.cs" />
     <Compile Include="Presenters\AddResourcePresenter.cs" />
@@ -123,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\EditAccountForm.resx">
       <DependentUpon>EditAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Forms\SignInForm.resx">
       <DependentUpon>SignInForm.cs</DependentUpon>

@@ -54,7 +54,7 @@
 			this.LoginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.LoginTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-			this.LoginTextBox.Location = new System.Drawing.Point(112, 56);
+			this.LoginTextBox.Location = new System.Drawing.Point(112, 47);
 			this.LoginTextBox.Name = "LoginTextBox";
 			this.LoginTextBox.Size = new System.Drawing.Size(290, 26);
 			this.LoginTextBox.TabIndex = 3;
@@ -64,7 +64,7 @@
 			this.PasswordTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(65)))));
 			this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.PasswordTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-			this.PasswordTextBox.Location = new System.Drawing.Point(112, 100);
+			this.PasswordTextBox.Location = new System.Drawing.Point(112, 83);
 			this.PasswordTextBox.Name = "PasswordTextBox";
 			this.PasswordTextBox.Size = new System.Drawing.Size(290, 26);
 			this.PasswordTextBox.TabIndex = 5;
@@ -101,7 +101,7 @@
 			// PasswordLabel
 			// 
 			this.PasswordLabel.AutoSize = true;
-			this.PasswordLabel.Location = new System.Drawing.Point(13, 103);
+			this.PasswordLabel.Location = new System.Drawing.Point(13, 85);
 			this.PasswordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.PasswordLabel.Name = "PasswordLabel";
 			this.PasswordLabel.Size = new System.Drawing.Size(83, 20);
@@ -111,7 +111,7 @@
 			// LoginLabel
 			// 
 			this.LoginLabel.AutoSize = true;
-			this.LoginLabel.Location = new System.Drawing.Point(13, 59);
+			this.LoginLabel.Location = new System.Drawing.Point(13, 49);
 			this.LoginLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.LoginLabel.Name = "LoginLabel";
 			this.LoginLabel.Size = new System.Drawing.Size(52, 20);

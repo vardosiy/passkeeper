@@ -13,9 +13,9 @@ namespace Passkeeper.Model.Entities
 	{
 		//---------------------------------------------------------------------
 
-		private BindingList< Account > m_accounts = new BindingList< Account >();
+		BindingList< Account > m_accounts = new BindingList< Account >();
 
-		private int m_currentAccountInternalIndex = -1;
+		uint m_currentAccountInternalIndex = uint.MinValue + 1; // min value reserved as default value
 
 		public string Name { get; private set; }
 
@@ -30,20 +30,26 @@ namespace Passkeeper.Model.Entities
 
 		public void AddAccount( Account _account )
 		{
-			_account.InternalIndex = ++m_currentAccountInternalIndex;
+			_account.InternalIndex = GetInternalIndexForAccount();
 			m_accounts.Add( _account );
 		}
-
-		public int AccountsCount => m_accounts.Count;
-
+		public void RemoveAccount( Account _account )
+		{
+			m_accounts.Remove( _account );
+		}
 		public Account GetAccount( int _index )
 		{
 			return m_accounts[ _index ];
 		}
 
-		public void RemoveAccount( Account _account )
+		public int AccountsCount => m_accounts.Count;
+
+		private uint GetInternalIndexForAccount()
 		{
-			m_accounts.Remove( _account );
+			if ( m_currentAccountInternalIndex == uint.MaxValue )
+				throw new Exception( "Max account index" );
+
+			return ++m_currentAccountInternalIndex;
 		}
 
 		//---------------------------------------------------------------------
@@ -58,7 +64,10 @@ namespace Passkeeper.Model.Entities
 				,	InternalNames.GetAccountSavePath( this, _record ) 
 			);
 		}
-
+		public void RemoveAccountHistory( Account _account )
+		{
+			File.Delete( InternalNames.GetAccountSavePath( this, _account ) );
+		}
 		public List< HistoryRecord > GetAccountHistory( Account _account )
 		{
 			object history = FileProcessor.RestoreWithDeserialization(
@@ -69,11 +78,6 @@ namespace Passkeeper.Model.Entities
 				?	history as List< HistoryRecord >
 				:	new List< HistoryRecord >()
 			;
-		}
-
-		public void RemoveAccountHistory( Account _account )
-		{
-			File.Delete( InternalNames.GetAccountSavePath( this, _account ) );
 		}
 
 		//---------------------------------------------------------------------

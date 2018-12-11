@@ -11,8 +11,8 @@ namespace Passkeeper.Presenters
 	{
 		//---------------------------------------------------------------------
 
-		private IApplicationForm m_form;
-		private Model.Model m_model;
+		readonly IApplicationForm m_form;
+		Model.Model m_model;
 
 		//---------------------------------------------------------------------
 
@@ -34,6 +34,7 @@ namespace Passkeeper.Presenters
 
 			m_form.ShowAccountHistory_Clicked += ShowAccountHistory_Clicked;
 			m_form.DeleteAccountHistory_Clicked += DeleteAccountHistory_Clicked;
+			m_form.SettingsButton_Clicked += SettingsButton_Clicked;
 		}
 
 		public void Run()
@@ -53,7 +54,10 @@ namespace Passkeeper.Presenters
 			presenter.Run();
 
 			if ( m_model.UserManager.CurrentUser == null )
+			{
 				m_form.Close();
+				return;
+			}
 
 			m_model.LoadData();
 			m_model.DataContainer.BindTo( m_form.ResourcesList );
@@ -68,7 +72,6 @@ namespace Passkeeper.Presenters
 
 			m_model.DataContainer.BindTo( m_form.ResourcesList );
 		}
-
 		private void RemoveResourceButton_Clicked( object _sender, EventArgs _e )
 		{
 			DialogResult result = Utils.MessageUtils.ShowWarning(
@@ -106,7 +109,6 @@ namespace Passkeeper.Presenters
 
 			presetner.Run();
 		}
-
 		private void EditAccountButton_Clicked( object _sender, EventArgs _e )
 		{
 			Account selectedAccount = m_form.SelectedAccount as Account;
@@ -132,7 +134,6 @@ namespace Passkeeper.Presenters
 				);
 			}
 		}
-
 		private void RemoveAccount_Clicked( object _sender, EventArgs _e )
 		{
 			DialogResult result = Utils.MessageUtils.ShowWarning(
@@ -171,6 +172,9 @@ namespace Passkeeper.Presenters
 			Account selectedAccount = m_form.SelectedAccount as Account;
 			Resource selectedResource = m_form.SelectedResource as Resource;
 
+			if ( selectedAccount == null )
+				return;
+
 			AccountHistoryPresenter presenter = new AccountHistoryPresenter(
 					new AccountHistoryForm()
 				,	selectedResource.GetAccountHistory( selectedAccount )
@@ -178,7 +182,6 @@ namespace Passkeeper.Presenters
 
 			presenter.Run();
 		}
-
 		private void DeleteAccountHistory_Clicked( object _sender, EventArgs _e )
 		{
 			DialogResult result = Utils.MessageUtils.ShowWarning(
@@ -192,6 +195,15 @@ namespace Passkeeper.Presenters
 			Resource selectedResource = m_form.SelectedResource as Resource;
 
 			selectedResource.RemoveAccountHistory( selectedAccount );
+		}
+		private void SettingsButton_Clicked( object _sender, EventArgs _e )
+		{
+			SettingsPresenter presetner = new SettingsPresenter(
+					m_model.UserManager
+				,	new SettingsForm()
+			);
+
+			presetner.Run();
 		}
 
 		//---------------------------------------------------------------------

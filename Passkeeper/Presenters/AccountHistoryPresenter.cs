@@ -10,11 +10,11 @@ namespace Passkeeper.Presenters
 	{
 		//---------------------------------------------------------------------
 
-		private readonly IAccountHistoryForm m_form;
+		readonly IAccountHistoryForm m_form;
 
 		//---------------------------------------------------------------------
 		
-		public AccountHistoryPresenter( IAccountHistoryForm _form, List< HistoryRecord > _history )
+		public AccountHistoryPresenter( IAccountHistoryForm _form, IList< HistoryRecord > _history )
 		{
 			m_form = _form;
 
@@ -37,10 +37,10 @@ namespace Passkeeper.Presenters
 
 		//---------------------------------------------------------------------
 
-		private string[] ConvertToStringArray( List< HistoryRecord > _convertable )
+		private string[] ConvertToStringArray( IList< HistoryRecord > _convertable )
 		{
 			int linesPerRecord = 5; // lines required for each record
-			string[] result = new string[ _convertable.Count * linesPerRecord];
+			string[] result = new string[ _convertable.Count * linesPerRecord ];
 			
 			for ( int i = 0; i < _convertable.Count; ++i )
 			{

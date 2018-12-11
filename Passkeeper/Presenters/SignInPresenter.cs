@@ -10,14 +10,11 @@ namespace Passkeeper.Presenters
 	{
 		//---------------------------------------------------------------------
 
-		private ISignInForm m_form;
-		private UserManager m_userManager;
+		enum WorkMode { SignIn, Create }
 
-		private WorkMode m_workMode = WorkMode.SignIn;
-
-		//---------------------------------------------------------------------
-
-		private enum WorkMode { SignIn, Create }
+		readonly ISignInForm m_form;
+		UserManager m_userManager;
+		WorkMode m_workMode = WorkMode.SignIn;
 
 		//---------------------------------------------------------------------
 
@@ -45,15 +42,14 @@ namespace Passkeeper.Presenters
 			switch ( m_workMode )
 			{
 				case WorkMode.SignIn:
-					ProcessOKButtonLoginMode();
+					OKButtonLoginMode_Clicked();
 					break;
 
 				case WorkMode.Create:
-					ProcessOKButtonCreateMode();
+					OKButtonCreateMode_Clicked();
 					break;
 			}
 		}
-
 		private void CreateUserButton_Clicked( object _sender, EventArgs _e )
 		{
 			m_workMode = m_workMode == WorkMode.SignIn
@@ -78,7 +74,7 @@ namespace Passkeeper.Presenters
 
 		//---------------------------------------------------------------------\
 		
-		private void ProcessOKButtonLoginMode()
+		private void OKButtonLoginMode_Clicked()
 		{
 			if ( !m_userManager.IsUserExists( m_form.Username ) )
 			{
@@ -96,8 +92,7 @@ namespace Passkeeper.Presenters
 				Utils.MessageUtils.ShowError( "Invalid password!" );
 			}
 		}
-
-		private void ProcessOKButtonCreateMode()
+		private void OKButtonCreateMode_Clicked()
 		{
 			if (	m_form.Username == string.Empty
 				||	m_form.Password == string.Empty

@@ -4,8 +4,6 @@ namespace Passkeeper.Utils
 {
 	static class MessageUtils
 	{
-		//---------------------------------------------------------------------
-
 		static public DialogResult ShowWarning( string _message )
 		{
 			return MessageBox.Show(
@@ -15,9 +13,6 @@ namespace Passkeeper.Utils
 				,	MessageBoxIcon.Warning
 			);
 		}
-
-		//---------------------------------------------------------------------
-
 		static public DialogResult ShowError( string _message )
 		{
 			return MessageBox.Show(
@@ -27,19 +22,14 @@ namespace Passkeeper.Utils
 				,	MessageBoxIcon.Error
 			);
 		}
-
-		//---------------------------------------------------------------------
-
-		static public DialogResult ShowMessage( string _message )
+		static public DialogResult ShowInfo( string _message )
 		{
 			return MessageBox.Show(
 					_message
 				,	"Info"
-				,	MessageBoxButtons.OKCancel
+				,	MessageBoxButtons.OK
 				,	MessageBoxIcon.Information
 			);
 		}
-
-		//---------------------------------------------------------------------
 	}
 }

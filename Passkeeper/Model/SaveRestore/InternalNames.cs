@@ -20,7 +20,6 @@ namespace Passkeeper.Model.SaveRestore
 				,	"user_manager".GetHashCode().ToString()
 			);
 		}
-
 		public static string GetDataContainerSavePath()
 		{
 			return Path.Combine(
@@ -44,7 +43,6 @@ namespace Passkeeper.Model.SaveRestore
 				,	_account.InternalIndex.GetHashCode().ToString()
 			);
 		}
-
 		public static string GetResourceSavePath(
 				Resource _resource
 		)

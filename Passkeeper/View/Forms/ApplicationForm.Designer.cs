@@ -255,9 +255,9 @@
 			this.SettingsButton.Name = "SettingsButton";
 			this.SettingsButton.Size = new System.Drawing.Size(527, 35);
 			this.SettingsButton.TabIndex = 12;
-			this.SettingsButton.Text = "Settings...";
+			this.SettingsButton.Text = "Settings";
 			this.SettingsButton.UseVisualStyleBackColor = false;
-			this.SettingsButton.Visible = false;
+			this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
 			// 
 			// ApplicationForm
 			// 

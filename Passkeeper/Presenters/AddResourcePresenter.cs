@@ -10,8 +10,8 @@ namespace Passkeeper.Presenters
 	{
 		//---------------------------------------------------------------------
 
-		private IAddResourceForm m_form;
-		private Model.Model m_model;
+		readonly IAddResourceForm m_form;
+		Model.Model m_model;
 
 		//---------------------------------------------------------------------
 
@@ -47,7 +47,6 @@ namespace Passkeeper.Presenters
 			m_model.DataContainer.AddResource( resource );
 			m_form.Close();
 		}
-
 		private void CancelButton_Clicked( object _sender, EventArgs _e )
 		{
 			m_form.Close();
