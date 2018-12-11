@@ -12,7 +12,6 @@ namespace Passkeeper.Model
 		//---------------------------------------------------------------------
 
 		BindingList< Resource > m_data;
-		BindingSource m_binding;
 
 		//---------------------------------------------------------------------
 
@@ -20,6 +19,7 @@ namespace Passkeeper.Model
 		{
 			LoadData();
 		}
+
 		~DataContainer()
 		{
 			SaveToFile();
@@ -31,12 +31,13 @@ namespace Passkeeper.Model
 		{
 			if ( m_data.Contains( _resource ) )
 			{
-				Utils.MessageUtils.ShowError( "Resource with such name already exists" );
+				MessageUtils.ShowError( "Resource with such name already exists" );
 				return;
 			}
 
 			m_data.Add( _resource );
 		}
+
 		public void RemoveResource( Resource _resource )
 		{
 			string savePath = InternalNames.GetResourceSavePath( _resource );
@@ -46,6 +47,7 @@ namespace Passkeeper.Model
 
 			m_data.Remove( _resource );
 		}
+
 		public Resource GetResource( int _index )
 		{
 			return m_data[_index];
@@ -72,6 +74,7 @@ namespace Passkeeper.Model
 				??	new BindingList< Resource >()
 			;
 		}
+
 		protected override void SaveToFile()
 		{
 			FileProcessor.SaveWithSerialization(

@@ -22,6 +22,7 @@ namespace Passkeeper.Model.SaveRestore
 
 			return ecrypted;
 		}
+
 		public static byte[] Decrypt( byte[] _data )
 		{
 			var cryptoProvider = EnsureCryptoProvider();

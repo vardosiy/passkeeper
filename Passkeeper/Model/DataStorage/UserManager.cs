@@ -20,6 +20,7 @@ namespace Passkeeper.Model
 		{
 			LoadData();
 		}
+
 		~UserManager()
 		{
 			if ( m_modified )
@@ -36,10 +37,12 @@ namespace Passkeeper.Model
 			m_users.Add( _username, _password );
 			m_modified = true;
 		}
+
 		public bool IsUserExists( string _username )
 		{
 			return m_users.ContainsKey( _username );
 		}
+
 		public bool TryLogin( string _username, string _password )
 		{
 			return m_users.Contains( new KeyValuePair< string, string >( _username, _password ) );
@@ -52,12 +55,15 @@ namespace Passkeeper.Model
 		{
 			m_users[CurrentUser] = _newPassword;
 		}
+
 		public void ChangeUsername( string _newUsername )
 		{
 			string password = m_users[CurrentUser];
 
 			m_users.Remove( CurrentUser );
 			m_users.Add( _newUsername, password );
+
+			m_modified = true;
 		}
 
 		//---------------------------------------------------------------------
@@ -72,6 +78,7 @@ namespace Passkeeper.Model
 				??	new Dictionary<string, string>()
 			;
 		}
+
 		protected override void SaveToFile()
 		{
 			SaveRestore.FileProcessor.SaveWithSerialization(

@@ -9,7 +9,7 @@ using Passkeeper.Model.SaveRestore;
 namespace Passkeeper.Model.Entities
 {
 	[Serializable]
-	public class Resource : IComparable< Resource >
+	public class Resource
 	{
 		//---------------------------------------------------------------------
 
@@ -33,10 +33,12 @@ namespace Passkeeper.Model.Entities
 			_account.InternalIndex = GetInternalIndexForAccount();
 			m_accounts.Add( _account );
 		}
+
 		public void RemoveAccount( Account _account )
 		{
 			m_accounts.Remove( _account );
 		}
+
 		public Account GetAccount( int _index )
 		{
 			return m_accounts[ _index ];
@@ -47,7 +49,16 @@ namespace Passkeeper.Model.Entities
 		private uint GetInternalIndexForAccount()
 		{
 			if ( m_currentAccountInternalIndex == uint.MaxValue )
-				throw new Exception( "Max account index" );
+			{
+				uint result = 0;
+				foreach ( var item in m_accounts )
+				{
+					if ( item.InternalIndex - result > 1 )
+					return result;
+
+					result = item.InternalIndex;
+				}
+			}
 
 			return ++m_currentAccountInternalIndex;
 		}
@@ -64,10 +75,12 @@ namespace Passkeeper.Model.Entities
 				,	InternalNames.GetAccountSavePath( this, _record ) 
 			);
 		}
+
 		public void RemoveAccountHistory( Account _account )
 		{
 			File.Delete( InternalNames.GetAccountSavePath( this, _account ) );
 		}
+
 		public List< HistoryRecord > GetAccountHistory( Account _account )
 		{
 			object history = FileProcessor.RestoreWithDeserialization(
@@ -85,11 +98,6 @@ namespace Passkeeper.Model.Entities
 		public void BindTo( ListControl _listControl )
 		{
 			_listControl.DataSource = m_accounts;
-		}
-
-		public int CompareTo( Resource _other )
-		{
-			return string.Compare( Name, _other.Name );
 		}
 
 		public override string ToString()

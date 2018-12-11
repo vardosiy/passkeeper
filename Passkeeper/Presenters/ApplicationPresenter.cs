@@ -69,12 +69,11 @@ namespace Passkeeper.Presenters
 		{
 			AddResourcePresenter presetner = new AddResourcePresenter( m_model, new AddResourceForm() );
 			presetner.Run();
-
-			m_model.DataContainer.BindTo( m_form.ResourcesList );
 		}
+
 		private void RemoveResourceButton_Clicked( object _sender, EventArgs _e )
 		{
-			DialogResult result = Utils.MessageUtils.ShowWarning(
+			DialogResult result = MessageUtils.ShowWarning(
 				"Are you sure, you want to remove data about all accounts asociated with this resource?"
 			);
 
@@ -102,13 +101,19 @@ namespace Passkeeper.Presenters
 
 		private void AddAccountButton_Clicked( object _sender, EventArgs _e )
 		{
+			Resource selectedResource = m_form.SelectedResource as Resource;
+
 			AddAccountPresetner presetner = new AddAccountPresetner(
-					m_form.SelectedResource as Resource
+					selectedResource
 				,	new AddAccountForm()
 			);
 
 			presetner.Run();
+
+			if ( selectedResource.AccountsCount == 1 )
+				SelectedResourceChanged( null, EventArgs.Empty );
 		}
+
 		private void EditAccountButton_Clicked( object _sender, EventArgs _e )
 		{
 			Account selectedAccount = m_form.SelectedAccount as Account;
@@ -134,9 +139,10 @@ namespace Passkeeper.Presenters
 				);
 			}
 		}
+
 		private void RemoveAccount_Clicked( object _sender, EventArgs _e )
 		{
-			DialogResult result = Utils.MessageUtils.ShowWarning(
+			DialogResult result = MessageUtils.ShowWarning(
 				"Are you sure, you want to remove this accounts and it's history?"
 			);
 
@@ -182,9 +188,10 @@ namespace Passkeeper.Presenters
 
 			presenter.Run();
 		}
+
 		private void DeleteAccountHistory_Clicked( object _sender, EventArgs _e )
 		{
-			DialogResult result = Utils.MessageUtils.ShowWarning(
+			DialogResult result = MessageUtils.ShowWarning(
 					"Are you sure, you want to clear history for this account?"
 			);
 
@@ -196,6 +203,7 @@ namespace Passkeeper.Presenters
 
 			selectedResource.RemoveAccountHistory( selectedAccount );
 		}
+
 		private void SettingsButton_Clicked( object _sender, EventArgs _e )
 		{
 			SettingsPresenter presetner = new SettingsPresenter(

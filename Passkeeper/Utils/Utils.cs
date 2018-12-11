@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Passkeeper.Utils
+namespace Passkeeper
 {
 	static class MessageUtils
 	{
@@ -13,6 +13,7 @@ namespace Passkeeper.Utils
 				,	MessageBoxIcon.Warning
 			);
 		}
+
 		static public DialogResult ShowError( string _message )
 		{
 			return MessageBox.Show(
@@ -22,6 +23,7 @@ namespace Passkeeper.Utils
 				,	MessageBoxIcon.Error
 			);
 		}
+
 		static public DialogResult ShowInfo( string _message )
 		{
 			return MessageBox.Show(
@@ -30,6 +32,14 @@ namespace Passkeeper.Utils
 				,	MessageBoxButtons.OK
 				,	MessageBoxIcon.Information
 			);
+		}
+	}
+
+	public static class HashAsString
+	{
+		public static string GetHashAsString( this object _obj )
+		{
+			return _obj.GetHashCode().ToString();
 		}
 	}
 }

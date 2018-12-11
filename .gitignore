@@ -1,3 +1,5 @@
 .vs/
 Passkeeper/bin/
 Passkeeper/obj/
+
+*.diff

@@ -50,10 +50,12 @@ namespace Passkeeper.Presenters
 					break;
 			}
 		}
+
 		private void CancelButton_Clicked( object _sender, EventArgs _e )
 		{
 			m_form.Close();
 		}
+
 		private void ChangeModeButton_Clicked( object _sender, EventArgs _e )
 		{
 			switch ( m_workMode )
@@ -104,32 +106,36 @@ namespace Passkeeper.Presenters
 		{
 			if ( !m_userManager.TryLogin( m_userManager.CurrentUser, m_form.CentralLabel.Text ) )
 			{
-				Utils.MessageUtils.ShowError( "Invalid current password." );
+				MessageUtils.ShowError( "Invalid current password." );
 				return;
 			}
 
 			if ( m_form.NewPassword.Text != m_form.ConfirmPassword.Text )
 			{
-				Utils.MessageUtils.ShowError( "Passwords not matching." );
+				MessageUtils.ShowError( "Passwords not matching." );
 				return;
 			}
 
 			m_userManager.ChangePassword( m_form.NewPassword.Text );
-
-			Utils.MessageUtils.ShowInfo( "Password changed successfully." );
+			MessageUtils.ShowInfo( "Password changed successfully." );
 		}
+
 		private void OKButtonChangeUsernameMode_Clicked()
 		{
 			if ( m_form.CentralTextBox.Text == string.Empty )
 			{
-				Utils.MessageUtils.ShowError( "Invalid input." );
+				MessageUtils.ShowError( "Invalid input." );
 				return;
 			}
 
-			m_userManager.ChangeUsername( m_form.CentralTextBox.Text );
-			m_userManager.CurrentUser = m_form.CentralTextBox.Text;
+			string newUsername = m_form.CentralTextBox.Text;
 
-			Utils.MessageUtils.ShowInfo( "Username changed successfully." );
+			Model.SaveRestore.InternalNames.RenameCurrentUserDirectory( newUsername );
+
+			m_userManager.ChangeUsername( newUsername );
+			m_userManager.CurrentUser = newUsername;
+
+			MessageUtils.ShowInfo( "Username changed successfully." );
 		}
 
 		//---------------------------------------------------------------------

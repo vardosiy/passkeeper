@@ -50,10 +50,12 @@ namespace Passkeeper.View.Forms
 		{
 			ApplyButton_Clicked?.Invoke( _sender, _e );
 		}
+
 		private void CancelButton_Click( object _sender, EventArgs _e )
 		{
 			CancelButton_Clicked?.Invoke( _sender, _e );
 		}
+
 		private void ChangeModeButton_Click( object _sender, EventArgs _e )
 		{
 			ChangeModeButton_Clicked?.Invoke( _sender, _e );

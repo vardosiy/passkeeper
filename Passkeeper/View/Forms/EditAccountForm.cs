@@ -33,6 +33,7 @@ namespace Passkeeper.View.Forms
 		{
 			OKButton_Clicked?.Invoke( _sender, _e );
 		}
+
 		private void CancelButton_Click( object _sender, EventArgs _e )
 		{
 			CancelButton_Clicked?.Invoke( _sender, _e );

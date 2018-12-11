@@ -50,6 +50,7 @@ namespace Passkeeper.Presenters
 					break;
 			}
 		}
+
 		private void CreateUserButton_Clicked( object _sender, EventArgs _e )
 		{
 			m_workMode = m_workMode == WorkMode.SignIn
@@ -78,7 +79,7 @@ namespace Passkeeper.Presenters
 		{
 			if ( !m_userManager.IsUserExists( m_form.Username ) )
 			{
-				Utils.MessageUtils.ShowError( "User with such name does not exist." );
+				MessageUtils.ShowError( "User with such name does not exist." );
 				return;
 			}
 
@@ -89,9 +90,10 @@ namespace Passkeeper.Presenters
 			}
 			else
 			{
-				Utils.MessageUtils.ShowError( "Invalid password!" );
+				MessageUtils.ShowError( "Invalid password!" );
 			}
 		}
+
 		private void OKButtonCreateMode_Clicked()
 		{
 			if (	m_form.Username == string.Empty
@@ -99,19 +101,19 @@ namespace Passkeeper.Presenters
 				||	m_form.Confirmation == string.Empty
 			)
 			{
-				Utils.MessageUtils.ShowError( "Invalid input." );
+				MessageUtils.ShowError( "Invalid input." );
 				return;
 			}
 
 			if ( m_userManager.IsUserExists( m_form.Username ) )
 			{
-				Utils.MessageUtils.ShowError( "User with such name already exists." );
+				MessageUtils.ShowError( "User with such name already exists." );
 				return;
 			}
 
 			if ( m_form.Password != m_form.Confirmation )
 			{
-				Utils.MessageUtils.ShowError( "Passwords not matching." );
+				MessageUtils.ShowError( "Passwords not matching." );
 				return;
 			}
 

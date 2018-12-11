@@ -14,6 +14,7 @@ namespace Passkeeper
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault( false );
 
+			Model.SaveRestore.InternalNames.SaveDirectory = "data";
 			Presenters.ApplicationPresenter presenter = new Presenters.ApplicationPresenter(
 					new View.Forms.ApplicationForm()
 				,	new Model.Model()

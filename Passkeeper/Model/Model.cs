@@ -23,9 +23,10 @@ namespace Passkeeper.Model
 			if ( DataContainer != null )
 				throw new Exception( "DataContainer was already loaded." );
 
-			SaveRestore.InternalNames.CurrentUser = UserManager.CurrentUser;
+			SaveRestore.InternalNames.UserManager = UserManager;
 			DataContainer = new DataContainer();
 		}
+
 		public void LoadUserManager()
 		{
 			if ( UserManager != null )

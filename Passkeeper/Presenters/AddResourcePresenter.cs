@@ -47,6 +47,7 @@ namespace Passkeeper.Presenters
 			m_model.DataContainer.AddResource( resource );
 			m_form.Close();
 		}
+
 		private void CancelButton_Clicked( object _sender, EventArgs _e )
 		{
 			m_form.Close();

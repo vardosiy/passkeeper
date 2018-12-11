@@ -22,6 +22,7 @@ namespace Passkeeper.Model.Entities
 
 			InternalIndex = uint.MinValue;
 		}
+
 		public Account( Account _account )
 		{
 			Email = _account.Email;

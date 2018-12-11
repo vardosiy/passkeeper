@@ -40,7 +40,7 @@ namespace Passkeeper.Presenters
 				||	m_form.Login == string.Empty && m_selectedAccount.Login != string.Empty
 			)
 			{
-				Utils.MessageUtils.ShowWarning(
+				MessageUtils.ShowWarning(
 						"You have cleared some field(s), changes will not be applied."
 				);
 
@@ -54,6 +54,7 @@ namespace Passkeeper.Presenters
 
 			m_form.Close();
 		}
+
 		private void CancelButton_Clicked( object _sender, EventArgs _e )
 		{
 			m_form.Close();
