@@ -38,6 +38,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\DataStorage\DataContainer.cs" />
+    <Compile Include="Model\SaveRestore\BackupManager.cs" />
     <Compile Include="Model\SaveRestore\InternalNames.cs" />
     <Compile Include="Model\SaveRestore\AesCrypter.cs" />
     <Compile Include="Model\SaveRestore\FileProcessor.cs" />

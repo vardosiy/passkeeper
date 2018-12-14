@@ -15,6 +15,9 @@ namespace Passkeeper.View.Interfaces
 		bool NewPasswordLabelVisible { get; set; }
 		bool ConfirmPasswordLabelVisible { get; set; }
 
+		uint BackupPeriod { get; set; }
+		string BackupPath { get; set; }
+
 		event EventHandler ApplyButton_Clicked;
 		event EventHandler CancelButton_Clicked;
 		event EventHandler ChangeModeButton_Clicked;

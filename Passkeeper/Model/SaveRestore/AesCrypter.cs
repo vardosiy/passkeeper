@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace Passkeeper.Model.SaveRestore
 {
-	public class AesCrypter
+	public static class AesCrypter
 	{
 		//---------------------------------------------------------------------
 
@@ -38,13 +38,15 @@ namespace Passkeeper.Model.SaveRestore
 
 		private static AesCryptoServiceProvider EnsureCryptoProvider()
 		{
-			AesCryptoServiceProvider cryptoProvider = new AesCryptoServiceProvider();
-			cryptoProvider.BlockSize = 128;
-			cryptoProvider.KeySize = 256;
-			cryptoProvider.Key = Encoding.ASCII.GetBytes( Key );
-			cryptoProvider.IV = Encoding.ASCII.GetBytes( IV );
-			cryptoProvider.Padding = PaddingMode.PKCS7;
-			cryptoProvider.Mode = CipherMode.CBC;
+			AesCryptoServiceProvider cryptoProvider = new AesCryptoServiceProvider
+			{
+				BlockSize = 128,
+				KeySize = 256,
+				Key = Encoding.ASCII.GetBytes( Key ),
+				IV = Encoding.ASCII.GetBytes( IV ),
+				Padding = PaddingMode.PKCS7,
+				Mode = CipherMode.CBC
+			};
 
 			return cryptoProvider;
 		}

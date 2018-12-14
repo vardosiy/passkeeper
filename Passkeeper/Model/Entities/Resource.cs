@@ -70,9 +70,9 @@ namespace Passkeeper.Model.Entities
 			var currentHistory = GetAccountHistory( _record );
 			currentHistory.Add( _record );
 
-			FileProcessor.SaveWithSerialization( 
-					currentHistory
-				,	InternalNames.GetAccountSavePath( this, _record ) 
+			FileProcessor.Save(
+					InternalNames.GetAccountSavePath( this, _record ) 
+				,	currentHistory
 			);
 		}
 
@@ -83,12 +83,12 @@ namespace Passkeeper.Model.Entities
 
 		public List< HistoryRecord > GetAccountHistory( Account _account )
 		{
-			object history = FileProcessor.RestoreWithDeserialization(
+			var history = FileProcessor.Restore(
 					InternalNames.GetAccountSavePath( this, _account )
 			);
 
 			return	history != null
-				?	history as List< HistoryRecord >
+				?	history[0] as List< HistoryRecord >
 				:	new List< HistoryRecord >()
 			;
 		}

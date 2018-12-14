@@ -2,6 +2,8 @@
 
 namespace Passkeeper
 {
+	//-------------------------------------------------------------------------
+
 	static class MessageUtils
 	{
 		static public DialogResult ShowWarning( string _message )
@@ -35,6 +37,8 @@ namespace Passkeeper
 		}
 	}
 
+	//-------------------------------------------------------------------------
+
 	public static class HashAsString
 	{
 		public static string GetHashAsString( this object _obj )
@@ -42,4 +46,20 @@ namespace Passkeeper
 			return _obj.GetHashCode().ToString();
 		}
 	}
+
+	//-------------------------------------------------------------------------
+
+	struct UserData
+	{
+		string Password { get; set; }
+		CryptoData CryptoData { get; set; }
+	}
+
+	struct CryptoData
+	{
+		string IV { get; set; }
+		string Key { get; set; }
+	}
+
+	//-------------------------------------------------------------------------
 }

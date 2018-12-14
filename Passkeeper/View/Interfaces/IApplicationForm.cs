@@ -16,6 +16,7 @@ namespace Passkeeper.View.Interfaces
 		string CurrentAccountPassword { get; set; }
 
 		event EventHandler Load;
+		event EventHandler Closed;
 
 		event EventHandler AddResourceButton_Clicked;
 		event EventHandler RemoveResourceButton_Clicked;

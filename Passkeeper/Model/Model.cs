@@ -8,6 +8,7 @@ namespace Passkeeper.Model
 
 		public DataContainer DataContainer { get; private set; }
 		public UserManager UserManager { get; private set; }
+		public BackupManager BackupManager { get; private set; }
 
 		//---------------------------------------------------------------------
 
@@ -20,11 +21,11 @@ namespace Passkeeper.Model
 
 		public void LoadData()
 		{
-			if ( DataContainer != null )
-				throw new Exception( "DataContainer was already loaded." );
+			if ( DataContainer != null || BackupManager != null )
+				throw new Exception( "DataContainer or BackupManager was already loaded." );
 
-			SaveRestore.InternalNames.UserManager = UserManager;
 			DataContainer = new DataContainer();
+			BackupManager = new BackupManager();
 		}
 
 		public void LoadUserManager()
@@ -33,6 +34,7 @@ namespace Passkeeper.Model
 				throw new Exception( "UserManager was already loaded." );
 
 			UserManager = new UserManager();
+			SaveRestore.InternalNames.UserManager = UserManager;
 		}
 
 		//---------------------------------------------------------------------

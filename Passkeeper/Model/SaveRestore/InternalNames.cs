@@ -11,24 +11,39 @@ namespace Passkeeper.Model.SaveRestore
 		static public string SaveDirectory { get; set; }
 		static public UserManager UserManager { get; set; }
 
+		public static string BackupManagerSavePath
+		{
+			get
+			{
+				return Path.Combine(
+						SaveDirectory
+					,	"backup_manager".GetHashAsString()
+				);
+			}
+		}
+		public static string UserManagerSavePath
+		{
+			get
+			{
+				return Path.Combine(
+						SaveDirectory
+					,	"user_manager".GetHashAsString()
+				);
+			}
+		}
+		public static string DataContainerSavePath
+		{
+			get
+			{
+				return Path.Combine(
+						SaveDirectory
+					,	UserManager.CurrentUser.GetHashAsString()
+					,	"data_container".GetHashAsString()
+				);
+			}
+		}
+
 		//---------------------------------------------------------------------
-
-		public static string GetUserManagerSavePath()
-		{
-			return Path.Combine(
-					SaveDirectory
-				,	"user_manager".GetHashAsString()
-			);
-		}
-
-		public static string GetDataContainerSavePath()
-		{
-			return Path.Combine(
-					SaveDirectory
-				,	UserManager.CurrentUser.GetHashAsString()
-				,	"data_container".GetHashAsString()
-			);
-		}
 
 		public static void RenameCurrentUserDirectory( string _newUsername )
 		{
@@ -40,7 +55,7 @@ namespace Passkeeper.Model.SaveRestore
 			Directory.Move( oldPath, newPath );
 		}
 
-	//---------------------------------------------------------------------
+		//---------------------------------------------------------------------
 
 		public static string GetAccountSavePath(
 				Resource _resource

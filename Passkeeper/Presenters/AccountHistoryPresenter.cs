@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Passkeeper.Model.Entities;
 using Passkeeper.View.Interfaces;
 
@@ -39,7 +38,7 @@ namespace Passkeeper.Presenters
 
 		private string[] ConvertToStringArray( IList< HistoryRecord > _convertable )
 		{
-			int linesPerRecord = 5; // lines required for each record
+			const int linesPerRecord = 5; // lines required for each record
 			string[] result = new string[ _convertable.Count * linesPerRecord ];
 			
 			for ( int i = 0; i < _convertable.Count; ++i )

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Passkeeper.Model.SaveRestore;
+
 namespace Passkeeper.Model
 {
 	public class UserManager : Storable
@@ -54,6 +56,8 @@ namespace Passkeeper.Model
 		public void ChangePassword( string _newPassword )
 		{
 			m_users[CurrentUser] = _newPassword;
+
+			m_modified = true;
 		}
 
 		public void ChangeUsername( string _newUsername )
@@ -70,20 +74,19 @@ namespace Passkeeper.Model
 
 		protected override void LoadData()
 		{
-			object data = SaveRestore.FileProcessor.RestoreWithDeserialization(
-					SaveRestore.InternalNames.GetUserManagerSavePath()
-			);
+			var data = FileProcessor.Restore( InternalNames.UserManagerSavePath );
 
-			m_users = data as Dictionary<string, string>
-				??	new Dictionary<string, string>()
-			;
+			if ( data == null )
+				m_users = new Dictionary< string, string >();
+			else
+				m_users = data[0] as Dictionary< string, string >;
 		}
 
 		protected override void SaveToFile()
 		{
-			SaveRestore.FileProcessor.SaveWithSerialization(
-					m_users
-				,	SaveRestore.InternalNames.GetUserManagerSavePath()
+			FileProcessor.Save(
+					InternalNames.UserManagerSavePath
+				,	m_users
 			);
 		}
 

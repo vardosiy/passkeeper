@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Passkeeper.Model.SaveRestore
@@ -7,12 +8,14 @@ namespace Passkeeper.Model.SaveRestore
 	{
 		//---------------------------------------------------------------------
 
-		public static void SaveWithSerialization( object _object, string _path )
+		public static void Save( string _path, params object[] _objects )
 		{
 			using ( MemoryStream memoryStream = new MemoryStream() )
 			{
 				BinaryFormatter binaryFormatter = new BinaryFormatter();
-				binaryFormatter.Serialize( memoryStream, _object );
+
+				foreach ( object obj in _objects )
+					binaryFormatter.Serialize( memoryStream, obj );
 
 				SaveToFile( _path, AesCrypter.Encrypt( memoryStream.ToArray() ) );
 			}
@@ -28,7 +31,7 @@ namespace Passkeeper.Model.SaveRestore
 
 		//---------------------------------------------------------------------
 
-		public static object RestoreWithDeserialization( string _path )
+		public static List< object > Restore( string _path )
 		{
 			byte[] fileContent = ReadFromFile( _path );
 			if ( fileContent == null )
@@ -39,7 +42,12 @@ namespace Passkeeper.Model.SaveRestore
 			MemoryStream memoryStream = new MemoryStream( decrypted );
 			BinaryFormatter binaryFormatter = new BinaryFormatter();
 
-			return binaryFormatter.Deserialize( memoryStream );
+			List< object > result = new List< object >();
+
+			while( memoryStream.Position != memoryStream.Length )
+				result.Add( binaryFormatter.Deserialize( memoryStream ) );
+
+			return result;
 		}
 
 		private static byte[] ReadFromFile( string _path )

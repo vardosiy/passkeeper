@@ -13,17 +13,21 @@ namespace Passkeeper.Presenters
 
 		ISettingsForm m_form;
 		UserManager m_userManager;
+		BackupManager m_backupManager;
+
 		WorkMode m_workMode = WorkMode.ChangeUsername;
 
 		//---------------------------------------------------------------------
 
 		public SettingsPresenter(
 				UserManager _userManager
+			,	BackupManager _backupManager
 			,	ISettingsForm _form
 		)
 		{
 			m_form = _form;
 			m_userManager = _userManager;
+			m_backupManager = _backupManager;
 
 			m_form.ApplyButton_Clicked += OKButton_Clicked;
 			m_form.CancelButton_Clicked += CancelButton_Clicked;
@@ -32,6 +36,10 @@ namespace Passkeeper.Presenters
 
 		public void Run()
 		{
+			m_form.BackupPath = m_backupManager.BackupPath;
+			m_form.BackupPeriod = m_backupManager.BackupPeriod;
+			m_form.CentralTextBox.Text = m_userManager.CurrentUser;
+
 			m_form.ShowDialog();
 		}
 
@@ -39,6 +47,9 @@ namespace Passkeeper.Presenters
 
 		private void OKButton_Clicked( object _sender, EventArgs _e )
 		{
+			m_backupManager.BackupPath = m_form.BackupPath;
+			m_backupManager.BackupPeriod = m_form.BackupPeriod;
+
 			switch ( m_workMode )
 			{
 				case WorkMode.ChangePassword:
@@ -104,7 +115,13 @@ namespace Passkeeper.Presenters
 
 		private void OKButtonChangePasswordMode_Clicked()
 		{
-			if ( !m_userManager.TryLogin( m_userManager.CurrentUser, m_form.CentralLabel.Text ) )
+			if ( m_form.CentralTextBox.Text == string.Empty )
+			{
+				m_form.Close();
+				return;
+			}
+
+			if ( !m_userManager.TryLogin( m_userManager.CurrentUser, m_form.CentralTextBox.Text ) )
 			{
 				MessageUtils.ShowError( "Invalid current password." );
 				return;
@@ -122,9 +139,11 @@ namespace Passkeeper.Presenters
 
 		private void OKButtonChangeUsernameMode_Clicked()
 		{
-			if ( m_form.CentralTextBox.Text == string.Empty )
+			if (	m_form.CentralTextBox.Text == m_userManager.CurrentUser
+				||	m_form.CentralTextBox.Text == string.Empty
+			)
 			{
-				MessageUtils.ShowError( "Invalid input." );
+				m_form.Close();
 				return;
 			}
 

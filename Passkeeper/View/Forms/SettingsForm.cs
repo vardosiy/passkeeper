@@ -19,7 +19,6 @@ namespace Passkeeper.View.Forms
 		public TextBox CentralTextBox => MainTextBox;
 		public TextBox NewPassword => NewPasswordTextBox;
 		public TextBox ConfirmPassword => ConfirmTextBox;
-
 		public Label CentralLabel => MainLabel;
 
 		public string ChangeModeButtonText
@@ -36,6 +35,17 @@ namespace Passkeeper.View.Forms
 		{
 			get => ConfirmPasswordLabel.Visible;
 			set => ConfirmPasswordLabel.Visible = value;
+		}
+
+		public uint BackupPeriod
+		{
+			get => (uint)BackupPeriodNumUD.Value;
+			set => BackupPeriodNumUD.Value = value;
+		}
+		public string BackupPath
+		{
+			get => BackupPathTextBox.Text;
+			set => BackupPathTextBox.Text = value;
 		}
 
 		//---------------------------------------------------------------------
@@ -59,6 +69,20 @@ namespace Passkeeper.View.Forms
 		private void ChangeModeButton_Click( object _sender, EventArgs _e )
 		{
 			ChangeModeButton_Clicked?.Invoke( _sender, _e );
+		}
+
+		private void BrowseFoldersButton_Click( object _sender, EventArgs _e )
+		{
+			FolderBrowserDialog dialog = new FolderBrowserDialog
+			{
+				SelectedPath = BackupPathTextBox.Text
+			};
+			DialogResult result = dialog.ShowDialog();
+
+			if ( result != DialogResult.OK )
+				return;
+
+			BackupPathTextBox.Text = dialog.SelectedPath;
 		}
 
 		//---------------------------------------------------------------------

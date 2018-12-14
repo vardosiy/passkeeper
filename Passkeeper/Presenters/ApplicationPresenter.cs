@@ -22,6 +22,7 @@ namespace Passkeeper.Presenters
 			m_model = _model;
 
 			m_form.Load += Form_Load;
+			m_form.Closed += Form_Closed;
 
 			m_form.AddAccountButton_Clicked += AddAccountButton_Clicked;
 			m_form.RemoveResourceButton_Clicked += RemoveResourceButton_Clicked;
@@ -61,6 +62,11 @@ namespace Passkeeper.Presenters
 
 			m_model.LoadData();
 			m_model.DataContainer.BindTo( m_form.ResourcesList );
+		}
+
+		private void Form_Closed( object sender, EventArgs e )
+		{
+			m_model.BackupManager.Run();
 		}
 
 		//---------------------------------------------------------------------
@@ -208,6 +214,7 @@ namespace Passkeeper.Presenters
 		{
 			SettingsPresenter presetner = new SettingsPresenter(
 					m_model.UserManager
+				,	m_model.BackupManager
 				,	new SettingsForm()
 			);
 

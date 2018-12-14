@@ -66,20 +66,19 @@ namespace Passkeeper.Model
 
 		protected override void LoadData()
 		{
-			object data = FileProcessor.RestoreWithDeserialization(
-					InternalNames.GetDataContainerSavePath()
-			);
+			var data = FileProcessor.Restore( InternalNames.DataContainerSavePath );
 
-			m_data = data as BindingList< Resource >
-				??	new BindingList< Resource >()
-			;
+			if ( data == null )
+				m_data = new BindingList< Resource >();
+			else
+				m_data = data[0] as BindingList< Resource >;
 		}
 
 		protected override void SaveToFile()
 		{
-			FileProcessor.SaveWithSerialization(
-					m_data
-				,	InternalNames.GetDataContainerSavePath()
+			FileProcessor.Save(
+					InternalNames.DataContainerSavePath
+				,	m_data
 			);
 		}
 
