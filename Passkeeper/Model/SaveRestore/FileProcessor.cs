@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
+using Passkeeper.Model.Entities;
+
 namespace Passkeeper.Model.SaveRestore
 {
 	public static class FileProcessor
@@ -62,6 +64,35 @@ namespace Passkeeper.Model.SaveRestore
 
 				return content;
 			}
+		}
+
+		//---------------------------------------------------------------------
+
+		public static void RenameCurrentUserDirectory( string _newUsername )
+		{
+			string oldPath = InternalNames.GetUserSavePath();
+			if ( !Directory.Exists( oldPath ) )
+				return;
+
+			string newPath = Path.Combine( InternalNames.SaveDirectory, _newUsername.GetHashAsString() );
+			Directory.Move( oldPath, newPath );
+		}
+
+		public static void MoveAccountSaveDirectory(
+				Resource _resource
+			,	Account _deletedAcc
+			,	Account _movebleAcc
+		)
+		{
+			string deletedAccPath = InternalNames.GetAccountSavePath( _resource, _deletedAcc );
+
+			if ( Directory.Exists( deletedAccPath ) )
+				Directory.Delete( deletedAccPath );
+
+			string oldAccPath = InternalNames.GetAccountSavePath( _resource, _movebleAcc );
+
+			if ( Directory.Exists( oldAccPath ) )
+				Directory.Move( oldAccPath, deletedAccPath );
 		}
 
 		//---------------------------------------------------------------------

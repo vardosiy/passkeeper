@@ -15,7 +15,7 @@ namespace Passkeeper.Model.Entities
 
 		BindingList< Account > m_accounts = new BindingList< Account >();
 
-		uint m_currentAccountInternalIndex = uint.MinValue + 1; // min value reserved as default value
+		uint m_currentAccountInternalIndex = uint.MinValue;
 
 		public string Name { get; private set; }
 
@@ -36,6 +36,14 @@ namespace Passkeeper.Model.Entities
 
 		public void RemoveAccount( Account _account )
 		{
+			RemoveAccountHistory( _account );
+
+			Account lastAddedAcc = m_accounts[m_accounts.Count - 1];
+			FileProcessor.MoveAccountSaveDirectory( this, _account, lastAddedAcc );
+
+			lastAddedAcc.InternalIndex = _account.InternalIndex;
+			--m_currentAccountInternalIndex;
+
 			m_accounts.Remove( _account );
 		}
 
@@ -49,16 +57,7 @@ namespace Passkeeper.Model.Entities
 		private uint GetInternalIndexForAccount()
 		{
 			if ( m_currentAccountInternalIndex == uint.MaxValue )
-			{
-				uint result = 0;
-				foreach ( var item in m_accounts )
-				{
-					if ( item.InternalIndex - result > 1 )
-					return result;
-
-					result = item.InternalIndex;
-				}
-			}
+				throw new MaxAmountOfAccounts();
 
 			return ++m_currentAccountInternalIndex;
 		}
@@ -78,7 +77,10 @@ namespace Passkeeper.Model.Entities
 
 		public void RemoveAccountHistory( Account _account )
 		{
-			File.Delete( InternalNames.GetAccountSavePath( this, _account ) );
+			string savePath = InternalNames.GetAccountSavePath( this, _account );
+
+			if ( File.Exists( savePath ) )
+				File.Delete( savePath );
 		}
 
 		public List< HistoryRecord > GetAccountHistory( Account _account )

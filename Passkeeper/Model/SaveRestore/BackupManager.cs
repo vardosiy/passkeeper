@@ -23,11 +23,6 @@ namespace Passkeeper.Model
 			LoadData();
 		}
 
-		~BackupManager()
-		{
-			SaveToFile();
-		}
-
 		//---------------------------------------------------------------------
 
 		public void Run()
@@ -40,15 +35,26 @@ namespace Passkeeper.Model
 				return;
 
 			string data = Path.GetFullPath( InternalNames.SaveDirectory );
-			string savePath = Path.Combine( BackupPath, current.ToString( "yyyy_MM_dd" ) + ".zip" );
+			string savePath = Path.Combine(
+					BackupPath
+				,	InternalNames.CurrentUser + '_' + current.ToString( "yyyy_MM_dd" ) + ".zip"
+			);
 
 			Directory.CreateDirectory( Path.GetDirectoryName( savePath ) );
-			ZipFile.CreateFromDirectory( data, savePath );
 
-			m_lastBackupTime = current;
+			if ( Directory.Exists( data ) )
+			{
+				ZipFile.CreateFromDirectory( data, savePath );
+				m_lastBackupTime = current;
+			}
 		}
 
 		//---------------------------------------------------------------------
+
+		public override void Save()
+		{
+			SaveToFile();
+		}
 
 		protected override void LoadData()
 		{

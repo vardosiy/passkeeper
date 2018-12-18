@@ -20,11 +20,6 @@ namespace Passkeeper.Model
 			LoadData();
 		}
 
-		~DataContainer()
-		{
-			SaveToFile();
-		}
-
 		//---------------------------------------------------------------------
 
 		public void AddResource( Resource _resource )
@@ -63,6 +58,11 @@ namespace Passkeeper.Model
 		}
 
 		//---------------------------------------------------------------------
+
+		public override void Save()
+		{
+			SaveToFile();
+		}
 
 		protected override void LoadData()
 		{

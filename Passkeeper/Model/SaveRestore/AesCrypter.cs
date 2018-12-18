@@ -7,8 +7,8 @@ namespace Passkeeper.Model.SaveRestore
 	{
 		//---------------------------------------------------------------------
 
-		const string IV = "qo1lc3sjd8zpt9cx"; // 128 bytes
-		const string Key = "ow7dxys8glfor9tnc2ansdfo1etkfjcv"; // 256 bytes
+		const string IV = "qo1lc3sjd8zpt9cx";
+		const string Key = "ow7dxys8glfor9tnc2ansdfo1etkfjcv";
 
 		//---------------------------------------------------------------------
 
@@ -38,10 +38,12 @@ namespace Passkeeper.Model.SaveRestore
 
 		private static AesCryptoServiceProvider EnsureCryptoProvider()
 		{
+			const int bitsInByte = 8;
+
 			AesCryptoServiceProvider cryptoProvider = new AesCryptoServiceProvider
 			{
-				BlockSize = 128,
-				KeySize = 256,
+				BlockSize = IV.Length * bitsInByte,
+				KeySize = Key.Length * bitsInByte,
 				Key = Encoding.ASCII.GetBytes( Key ),
 				IV = Encoding.ASCII.GetBytes( IV ),
 				Padding = PaddingMode.PKCS7,

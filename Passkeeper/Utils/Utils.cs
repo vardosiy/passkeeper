@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Passkeeper
 {
@@ -39,12 +40,18 @@ namespace Passkeeper
 
 	//-------------------------------------------------------------------------
 
-	public static class HashAsString
+	public static class ExtHashAsString
 	{
 		public static string GetHashAsString( this object _obj )
 		{
 			return _obj.GetHashCode().ToString();
 		}
+	}
+
+	//-------------------------------------------------------------------------
+
+	class MaxAmountOfAccounts : Exception
+	{
 	}
 
 	//-------------------------------------------------------------------------

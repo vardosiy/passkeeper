@@ -149,7 +149,13 @@ namespace Passkeeper.Presenters
 
 			string newUsername = m_form.CentralTextBox.Text;
 
-			Model.SaveRestore.InternalNames.RenameCurrentUserDirectory( newUsername );
+			if ( m_userManager.IsUserExists( newUsername ) )
+			{
+				MessageUtils.ShowError( "User with such name already exists." );
+				return;
+			}
+
+			Model.SaveRestore.FileProcessor.RenameCurrentUserDirectory( newUsername );
 
 			m_userManager.ChangeUsername( newUsername );
 			m_userManager.CurrentUser = newUsername;

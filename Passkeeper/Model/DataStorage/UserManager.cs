@@ -23,12 +23,6 @@ namespace Passkeeper.Model
 			LoadData();
 		}
 
-		~UserManager()
-		{
-			if ( m_modified )
-				SaveToFile();
-		}
-
 		//---------------------------------------------------------------------
 
 		public void AddUser( string _username, string _password )
@@ -51,8 +45,7 @@ namespace Passkeeper.Model
 		}
 
 		//---------------------------------------------------------------------
-
-		// only for current user
+		
 		public void ChangePassword( string _newPassword )
 		{
 			m_users[CurrentUser] = _newPassword;
@@ -71,6 +64,12 @@ namespace Passkeeper.Model
 		}
 
 		//---------------------------------------------------------------------
+
+		public override void Save()
+		{
+			if ( m_modified )
+				SaveToFile();
+		}
 
 		protected override void LoadData()
 		{

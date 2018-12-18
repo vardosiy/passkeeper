@@ -66,7 +66,14 @@ namespace Passkeeper.Presenters
 
 		private void Form_Closed( object sender, EventArgs e )
 		{
+			if ( m_model.UserManager.CurrentUser == null )
+				return;
+
+			m_model.DataContainer.Save();
+			m_model.UserManager.Save();
+
 			m_model.BackupManager.Run();
+			m_model.BackupManager.Save();
 		}
 
 		//---------------------------------------------------------------------
@@ -181,10 +188,9 @@ namespace Passkeeper.Presenters
 
 		private void ShowAccountHistory_Clicked( object _sender, EventArgs _e )
 		{
-			Account selectedAccount = m_form.SelectedAccount as Account;
 			Resource selectedResource = m_form.SelectedResource as Resource;
 
-			if ( selectedAccount == null )
+			if ( !( m_form.SelectedAccount is Account selectedAccount ) )
 				return;
 
 			AccountHistoryPresenter presenter = new AccountHistoryPresenter(

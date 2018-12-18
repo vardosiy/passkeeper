@@ -11,12 +11,15 @@ namespace Passkeeper.Model.SaveRestore
 		static public string SaveDirectory { get; set; }
 		static public UserManager UserManager { get; set; }
 
+		public static string CurrentUser => UserManager.CurrentUser;
+
 		public static string BackupManagerSavePath
 		{
 			get
 			{
 				return Path.Combine(
 						SaveDirectory
+					,	CurrentUser.GetHashAsString()
 					,	"backup_manager".GetHashAsString()
 				);
 			}
@@ -37,22 +40,10 @@ namespace Passkeeper.Model.SaveRestore
 			{
 				return Path.Combine(
 						SaveDirectory
-					,	UserManager.CurrentUser.GetHashAsString()
+					,	CurrentUser.GetHashAsString()
 					,	"data_container".GetHashAsString()
 				);
 			}
-		}
-
-		//---------------------------------------------------------------------
-
-		public static void RenameCurrentUserDirectory( string _newUsername )
-		{
-			string oldPath = Path.Combine( SaveDirectory, UserManager.GetHashAsString() );
-			if ( !Directory.Exists( oldPath ) )
-				return;
-
-			string newPath = Path.Combine( SaveDirectory, _newUsername.GetHashAsString() );
-			Directory.Move( oldPath, newPath );
 		}
 
 		//---------------------------------------------------------------------
@@ -64,7 +55,7 @@ namespace Passkeeper.Model.SaveRestore
 		{
 			return Path.Combine(
 					SaveDirectory
-				,	UserManager.CurrentUser.GetHashAsString()
+				,	CurrentUser.GetHashAsString()
 				,	_resource.Name.GetHashAsString()
 				,	_account.InternalIndex.GetHashAsString()
 			);
@@ -76,8 +67,16 @@ namespace Passkeeper.Model.SaveRestore
 		{
 			return Path.Combine(
 					SaveDirectory
-				,	UserManager.CurrentUser.GetHashAsString()
+				,	CurrentUser.GetHashAsString()
 				,	_resource.Name.GetHashAsString()
+			);
+		}
+
+		public static string GetUserSavePath()
+		{
+			return Path.Combine(
+					SaveDirectory
+				,	CurrentUser.GetHashAsString()
 			);
 		}
 

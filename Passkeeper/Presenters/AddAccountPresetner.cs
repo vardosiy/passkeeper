@@ -44,7 +44,16 @@ namespace Passkeeper.Presenters
 			}
 
 			Account account = new Account( m_form.Email, m_form.Login, m_form.Password );
-			m_selectedResource.AddAccount( account );
+			try
+			{
+				m_selectedResource.AddAccount( account );
+			}
+			catch ( MaxAmountOfAccounts )
+			{
+				MessageUtils.ShowError(
+					"You have already created maximal possible count of accounts"
+				);
+			}
 
 			m_form.Close();
 		}
